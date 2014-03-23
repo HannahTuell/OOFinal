@@ -75,7 +75,7 @@ namespace bicycle {
 
   // Post: Deck is in factory order: A - K; S, D, C, H.
   void Deck::reset( ) {
-    Deck temp ( size_ / ( hasJokers_ ) ? STDDECKWJ : STDDECK, hasJokers_ );
+    Deck temp ( size_ / ( hasJokers_ ? STDDECKWJ : STDDECK ), hasJokers_ );
     combine( );
     draw_ = temp.draw_;
   }

@@ -111,10 +111,10 @@ namespace bicycle {
     void shuffle( );
 
   private:
-    list<Card> draw_;
-    list<Card> discard_;
-    bool       hasJokers_;
-    short      size_;
+    list<Card> draw_;      // Draw pile
+    list<Card> discard_;   // Discard Pile
+    bool       hasJokers_; // If jokers are in play
+    short      size_;      // Total number of cards in play
   };
   //=====================================
 }

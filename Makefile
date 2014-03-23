@@ -6,8 +6,6 @@ FLAGS = -Wall -O2 -arch x86_64
 
 # File Names
 EXEC = canasta
-TEST = testsuit
-TESTFILES = $(wildcard test*.cpp)
 LIBS = bicycle.a
 
 # Libraries - Linux
@@ -24,9 +22,6 @@ all: $(EXEC) $(TEST)
 $(EXEC): main.o $(LIBS)
 	@$(CXX) $(FLAGS) -o $@ $^ 
 
-$(TEST): $(TESTFILES) $(LIBS)
-	@$(CXX) $(FLAGS) -o $@ $^ 
-
 # Generic Compile Rules
 %.o: %.cpp
 	@echo // Building $@
@@ -37,7 +32,7 @@ bicycle.a: card.o deck.o
 	@ar -rcs $@ $^
 
 # Delete unwanted files - Linux or OX/X
-clean:; @rm -f $(wildcard $(EXEC)) $(wildcard $(TEST)) $(wildcard *.o) $(wildcard *.a) *~
+clean:; @rm -f $(wildcard $(EXEC)) $(wildcard *.o) $(wildcard *.a) *~
 # Delete unwanted files - MinGW
 #clean:;del *.exe *.o *.a
 
