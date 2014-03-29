@@ -10,14 +10,17 @@
  ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-namespace bicycle {
+namespace bicycle
+{
   //
   // Constructor
   //
   // Pre: Number of standard decks, if jokers are needed.
-  Deck::Deck ( short decks, bool needJokers ) {
+  Deck::Deck ( short decks, bool needJokers )
+  {
     Card temp;
-    int decktotal = ( hasJokers_ = needJokers ) ? STDDECKWJ : STDDECK;
+    hasJokers_ = needJokers;
+    int decktotal = hasJokers_ ? STDDECKWJ : STDDECK;
     size_ = decktotal * decks;
 
     for ( int i = 0; i < decks; ++i ) {
@@ -38,9 +41,18 @@ namespace bicycle {
   //
   // Member Methods
   //
+  // Post: Private variables have been changed.
+  void Deck::set_info( int decks, bool needJokers ) { 
+    hasJokers_ = needJokers;
+    int decktotal = hasJokers_ ? STDDECKWJ : STDDECK;
+    size_ = decktotal * decks;
+  }
+
+
   // Pre:  There must be at least one card in discard pile.
   // Post: Cards from the discard pile and draw pile have been shuffled together.
-  void Deck::combine( ) {
+  void Deck::combine( )
+  {
     list<Card>::iterator it;
 
     // Check for any cards in pile
@@ -59,7 +71,8 @@ namespace bicycle {
   // Pre:  There must be at least one card in draw pile.
   // Post: The top card is given and removed from the draw pile,
   //       decreasing the number of cards left.
-  Card Deck::deal( ) {
+  Card Deck::deal( )
+  {
     Card temp;
 
     // Make sure cards are available
@@ -74,14 +87,16 @@ namespace bicycle {
   void Deck::discard( Card garbage ) { discard_.push_front( garbage ); }
 
   // Post: Deck is in factory order: A - K; S, D, C, H.
-  void Deck::reset( ) {
+  void Deck::reset( )
+  {
     Deck temp ( size_ / ( hasJokers_ ? STDDECKWJ : STDDECK ), hasJokers_ );
     combine( );
     draw_ = temp.draw_;
   }
 
   // Pre:  There is at least one card in the draw pile.
-  void Deck::shuffle( ) {
+  void Deck::shuffle( )
+  {
     short randomCard;
     list<Card> temp;
     list<Card>::iterator it;
@@ -98,6 +113,26 @@ namespace bicycle {
     }
 
     draw_ = temp;
+  }
+
+  // Post: The contents of the deck have been printed
+  void Deck::print( ) {
+    list<Card>::iterator it, end;
+    cout << "*** Draw Deck ***" << endl;
+    it  = draw_.begin();
+    end = draw_.end();
+
+    for ( ; it != end; ++it ) {
+      cout << *it << ", ";
+    }
+
+    cout << endl << "*** Discard Deck ***" << endl;
+    it  = discard_.begin();
+    end = discard_.end();
+    for ( ; it != end; ++it ) {
+      cout << *it << ", ";
+    }
+    
   }
 }
 ///////////////////////////////////////////////////////////////////////////////

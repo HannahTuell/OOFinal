@@ -5,7 +5,7 @@ CXX  = g++
 FLAGS = -Wall -O2 -arch x86_64
 
 # File Names
-EXEC = canasta
+EXEC = cardgame
 LIBS = bicycle.a
 
 # Libraries - Linux
@@ -27,7 +27,7 @@ $(EXEC): main.o $(LIBS)
 	@echo // Building $@
 	@$(CXX) -c $< -o $@ $(FLAGS)
 
-bicycle.a: card.o deck.o
+bicycle.a: card.o deck.o player.o dealer.o game.o euchre.o
 	@echo // Building $@
 	@ar -rcs $@ $^
 

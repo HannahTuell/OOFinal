@@ -65,7 +65,7 @@ namespace bicycle {
   void Card::flip( ) { isFaceUp ( !isFaceUp_ ); }
 
   // Post: Prints the necessary information
-  const char * Card::print( ) {
+  void Card::print( ) {
     stringstream ss;
     string rank, suit;
     
@@ -89,10 +89,32 @@ namespace bicycle {
       default:        suit = "Hearts";    break;
     }
     
-    ss.clear();
-    ss << rank << " of " << suit;
+    cout << rank << " of " << suit;
+  }
+
+  // Post: Card has been outputted to ostream
+  ostream &operator<<( ostream &output, const Card &c )
+  { 
+    switch ( c.rank_ ) {
+      case 14:  output << "O";     break;
+      case 13:  output << "K";     break;
+      case 12:  output << "Q";     break;
+      case 11:  output << "J";     break;
+      case  1:  output << "A";     break;
+      default:  output << c.rank_; break;
+    }
+
+    // output << " of ";
     
-    return ss.str().c_str();
+    switch ( c.suit_ )
+    {
+      case SPADES:    output << "S"; break;
+      case DIAMONDS:  output << "D"; break;
+      case CLUBS:     output << "C"; break;
+      default:        output << "H"; break;
+    }
+
+    return output;            
   }
 }
 ///////////////////////////////////////////////////////////////////////////////
