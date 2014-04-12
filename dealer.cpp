@@ -27,10 +27,14 @@ namespace bicycle
   // Member Methods
   //
   // Post: Player has been added to the game
+
+/*BROKEN - Hannah commented out to make
   void Dealer::register( void *player )
   {
-    players_.push_front( &player );
+    players_.push_front( &player ); // holds pointers to players
+
   }
+*///END BROKEN
 
   // Post: Dealer prints the state of the game
   void Dealer::print( )

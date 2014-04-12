@@ -10,18 +10,28 @@
 #include <cstdlib>
 #include "bicycle.h"
 
+// openGL functionality
+#include "CSCIx229.h"
+#include "visuals.h"
+
 using namespace std;
 using namespace bicycle;
 ///////////////////////////////////////////////////////////////////////////////
 
 int main() {
+
   Euchre game;
   Dealer joe( game );
   Player me ( "Wallace" );
-  joe.register( me );
+  string newPlayer = me.get_name();
+  cout << endl << "Current Player: " << newPlayer << endl << endl;
 
-  joe.print();
-  
+
+  //joe.register( me );
+  //joe.print();
+
+
   return EXIT_SUCCESS;
+
 }
 ///////////////////////////////////////////////////////////////////////////////

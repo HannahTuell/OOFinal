@@ -226,8 +226,10 @@ namespace bicycle
     // Member Methods
     //
     // Post: Player has been added to the game
+    /*BROKEN - Hannah commented out to make
     void register( void *player );
-
+    *///END BROKEN
+    
     // Post: Dealer prints the state of the game
     void print();
   private:
