@@ -1,5 +1,5 @@
-CSCI 4448: Object Oriented Analysis and Design
-==============================================
+Object Oriented Analysis and Design
+===================================
 
 We are creating a card game framework. This framework will allow people to create card games and play with them. We will go ahead and implement a game of Euchre.
 
@@ -23,91 +23,59 @@ Members
 
 *   [justin.woodward@colorado.edu][woodward]
 
-Directory
----------
-
-### main.cpp ###
-
-Starts the Program
-
-### Makefile ###
-
-Builds the executable
-  
-### README.md ###
-
-This file.
-
-### bicycle.a ###
-
-This file is an archive of the card game framework.
-
-#### card.cpp ####
-
-The basic card class. Stores things like suit, value and rank. 
-
-#### deck.cpp ####
-
-Holds a collection of cards.
-
-#### player.cpp ####
-
-This is the player UI and opponent AI constituents of the game.
-
-#### game.cpp ####
-
-This is the generic class for how the games are played.
-
-#### euchre.cpp ####
-
-This is an instantiated game class which implements the game, Euchre, the card game of Indiana.
-
-### CSCIx229.a ###
-
-Archive library of OpenGL graphical helper functions, provided by Prof. Schreüder.
-
-#### print.c ####
-
-Print
-
-#### fatal.c ####
-
-Fatal
-
-#### loadtexbmp.c ####
-
-LoadTexBMP
-
-#### project.c ####
-
-Project
-
-#### errcheck.c ####
-
-ErrCheck
-
-#### object.c ####
-
-LoadOBJ
-
-### visuals.h ###
-
-Library interface for drawing a card game
-
 Commands
 --------
 
 ### Build ###
 
-  make
+      make
 
 ### Clean ###
 
-  make clean
+      make clean
 
 ### Execute Program ###
 
-  ./cardgame
+      ./cardgame
+
+Directory
+---------
+
+*  `Makefile`
+   -  Builds the executable
+*  `main.cpp`
+   -  Starts the Program
+*  `README.md`
+   -  This file.
+
+*  `bicycle.a`
+   - This file is an archive of the card game framework.
+   - `card.cpp`
+      + The basic card class. Stores things like suit, value and rank. 
+   - `deck.cpp`
+      + Holds a collection of cards.
+   - `player.cpp`
+      + This is the player UI and opponent AI constituents of the game.
+   - `game.cpp`
+      + This is the generic class for how the games are played.
+   - `euchre.cpp`
+      + This is an instantiated game class which implements the game, Euchre, the card game of Indiana.
+*  `CSCIx229.a`
+   - Archive library of OpenGL graphical helper functions, provided by Prof. Schreüder.
+   - `print.c`
+      + Print
+   - `fatal.c`
+      + Fatal
+   - `loadtexbmp.c`
+      + LoadTexBMP
+   - `project.c`
+      + Project
+   - `errcheck.c`
+      + ErrCheck
+   - `object.c`
+      + LoadOBJ
+* `visuals.h`
+   - Library interface for drawing a card game
 
   [tuell]:     mailto:hannah.tuell@colorado.edu
   [vargas]:    mailto:patrick@vargascorpus.com
