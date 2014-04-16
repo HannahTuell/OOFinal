@@ -1,66 +1,115 @@
-------------------------------------------------------------
-University of Colorado Boulder
-Object Oriented Analysis & Design (CSCI 4448) - Spring 2014
+CSCI 4448: Object Oriented Analysis and Design
+==============================================
 
-Final Project - Card Game Framework
-  Hannah Tuell: hannah.tuell@colorado.edu
-  Patrick Vargas: patrick.vargas@colorado.edu
-  Justin Woodward: justin.woodward@colorado.edu
+We are creating a card game framework. This framework will allow people to create card games and play with them. We will go ahead and implement a game of Euchre.
 
-We are creating a card game framework. This framework will 
-  allow people to create card games and play with them. We 
-  will go ahead and implement a game of Klondike.
-------------------------------------------------------------
-FILES:
+Members
+-------
 
-  main.cpp
-   * primary functionality of system
+**Hannah Tuell**
 
+*   [hannah.tuell@colorado.edu][tuell]
 
-  Makefile
-   * Builds the executable
-  README.md
-   * accompaniment that explains the project
-  .gitignore
-   * source code management
+**Patrick E. Vargas**
 
+*   BS Computer Science, Software Engineering  
+    *   Atmospheric and Oceanic Science Minor  
+    *   Technology, Arts and Media Minor  
+*   (720) 515 - 6402  
+*   [www.vargascorpus.com][vargasweb]  
+*   [patrick@vargascorpus.com][vargas]  
 
-  bicycle.h
-   * [PATRICK -- UPDATE NOTE HERE]
-    dealer.player
-  	cpp.cpp
- 	  deck.cpp
-  	card.cpp
-  	game.cpp
-	  euchre.cpp
+**Justin Woodward**
 
+*   [justin.woodward@colorado.edu][woodward]
 
-  CSCIx229.h
-   * Library provided by Prof. Schreüder extending OpenGL
- 	  print.c      - Print
- 	  fatal.c      - Fatal
- 	  loadtexbmp.c - LoadTexBMP
- 	  project.c    - Project
- 	  errcheck.c   - ErrCheck
- 	  object.c     - LoadOBJ
+Directory
+---------
 
-  visuals.h
-   * Library interface for drawing a card game
+### main.cpp ###
 
-------------------------------------------------------------
-EXECUTABLES:
+Starts the Program
+
+### Makefile ###
+
+Builds the executable
+  
+### README.md ###
+
+This file.
+
+### bicycle.a ###
+
+This file is an archive of the card game framework.
+
+#### card.cpp ####
+
+The basic card class. Stores things like suit, value and rank. 
+
+#### deck.cpp ####
+
+Holds a collection of cards.
+
+#### player.cpp ####
+
+This is the player UI and opponent AI constituents of the game.
+
+#### game.cpp ####
+
+This is the generic class for how the games are played.
+
+#### euchre.cpp ####
+
+This is an instantiated game class which implements the game, Euchre, the card game of Indiana.
+
+### CSCIx229.a ###
+
+Archive library of OpenGL graphical helper functions, provided by Prof. Schreüder.
+
+#### print.c ####
+
+Print
+
+#### fatal.c ####
+
+Fatal
+
+#### loadtexbmp.c ####
+
+LoadTexBMP
+
+#### project.c ####
+
+Project
+
+#### errcheck.c ####
+
+ErrCheck
+
+#### object.c ####
+
+LoadOBJ
+
+### visuals.h ###
+
+Library interface for drawing a card game
+
+Commands
+--------
+
+### Build ###
+
+  make
+
+### Clean ###
+
+  make clean
+
+### Execute Program ###
+
   ./cardgame
-   * [UPDATE THIS WHEN DECIDED]
 
-------------------------------------------------------------
-HOW-TO:
-
--Build -------------------
-   * Make the executable:
-     make
-   * Clean
-     make clean
-
-
-
-
+  [tuell]:     mailto:hannah.tuell@colorado.edu
+  [vargas]:    mailto:patrick@vargascorpus.com
+  [vargasweb]: http://www.vargascorpus.com
+  [woodward]:  mailto:justin.woodward@colorado.edu
