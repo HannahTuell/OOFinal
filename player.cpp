@@ -70,8 +70,15 @@ namespace bicycle
   // Post: Player's cards (if any) have been returned as a string
   void Player::print( )
   {
-    list<Card>::const_iterator it;
-    cout << name_ << "'s Hand: " << endl;
+    list<Card>::const_iterator it, end;
+    cout << name_ << "'s Hand: ";
+    it  = hand_.begin();
+    end = hand_.end();
+
+    for ( ; it != end; ++it ) {
+      cout << *it << ", ";
+    }
+    cout << endl;
   }
 
   // Post: Card has been outputted to ostream

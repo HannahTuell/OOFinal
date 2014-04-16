@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// File:   main.cpp                    Summer 2013
+// File:   main.cpp                    Spring 2014
 // Author: Patrick Vargas              patrick.vargas@colorado.edu
 // Description:
 //    Main Program
@@ -22,14 +22,12 @@ int main() {
 
   Euchre game;
   Dealer joe( game );
-  Player me ( "Wallace" );
-  string newPlayer = me.get_name();
-  cout << endl << "Current Player: " << newPlayer << endl << endl;
-
-
-  //joe.register( me );
-  //joe.print();
-
+  string name;
+  cout << endl << "Your Name, Please: ";
+  cin >> name;
+  Player me ( name );
+  joe.user( me );
+  joe.play();
 
   return EXIT_SUCCESS;
 

@@ -73,9 +73,6 @@ namespace bicycle
     friend ostream &operator<<( ostream &output, const Card &c );
 
   private:
-    //
-    // Private Member Data
-    //
     short rank_;     // Rank of Card, 1 - 14
     short suit_;     // Suit of Card, enum Suit
     short value_;    // Game value, based upon game bing played
@@ -98,8 +95,17 @@ namespace bicycle
     //
     // Member Methods
     //
+    // Post: The new draw deck has been set.
+    void set_draw( list<Card> list );
+
     // Post: Private variables have been changed.
     void set_info( int decks, bool needJokers );
+
+    // Post: The size of the deck has been set.
+    void set_size( short size );
+
+    // Post: The number of cards remaining is returned.
+    short get_cards_left( );
 
     // Pre:  There must be at least one card in discard pile.
     // Post: Cards from the discard pile and draw pile have been shuffled together.
@@ -188,16 +194,29 @@ namespace bicycle
     // 
     // Member Methods
     //
-    virtual void addValues( Deck &d ) =0;
-
     // Pre: Number of decks needed
-    int decks();
+    short decks();
 
     // Pre: True if jokers are needed
     bool jokers();
+
+    // Post: Returns the initial number of cards to deal out
+    short starting_hand( );
+
+    // Post: The trump has been stored.
+    void trump( short t );
+
+    // Post: The trump has been returned.
+    short trump( );
+
+    // Post: The playing deck has been initialized
+    virtual Deck set_deck( ) =0;
+
   protected:
     short decks_;
     bool  jokers_;
+    short init_hand_;
+    short trumps_;
   };
   //=====================================
 
@@ -207,7 +226,7 @@ namespace bicycle
   class Euchre : public Game {
   public:
     Euchre();
-    void addValues( Deck &d );
+    Deck set_deck( );
   };
   //=====================================
 
@@ -225,16 +244,22 @@ namespace bicycle
     //
     // Member Methods
     //
-    // Post: Player has been added to the game
-    /*BROKEN - Hannah commented out to make
-    void register( void *player );
-    *///END BROKEN
-    
+    // Post: Runs the game
+    void play( );
+
     // Post: Dealer prints the state of the game
     void print();
+
+    // Post: The user has been registered to play
+    void user( Player &u );
+
   private:
-    list<void *> players_;
+    // list<Player> oppenents_;
     Player board_;
+    Player user_;
+    Player partner_;
+    Player ai1_;
+    Player ai2_;
     Deck deck_;
     Game *game_;
   };

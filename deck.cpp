@@ -41,6 +41,11 @@ namespace bicycle
   //
   // Member Methods
   //
+  // Post: The new draw deck has been set.
+  void Deck::set_draw( list<Card> list ) {
+    draw_ = list;
+  }
+
   // Post: Private variables have been changed.
   void Deck::set_info( int decks, bool needJokers ) { 
     hasJokers_ = needJokers;
@@ -48,6 +53,12 @@ namespace bicycle
     size_ = decktotal * decks;
   }
 
+  // Post: The size of the deck has been set.
+  void Deck::set_size( short size ) {
+    size_ = size;
+  }
+  // Post: The number of cards remaining is returned.
+  short Deck::get_cards_left( ) { return draw_.size( ); }
 
   // Pre:  There must be at least one card in discard pile.
   // Post: Cards from the discard pile and draw pile have been shuffled together.
@@ -132,7 +143,7 @@ namespace bicycle
     for ( ; it != end; ++it ) {
       cout << *it << ", ";
     }
-    
+    cout << endl;
   }
 }
 ///////////////////////////////////////////////////////////////////////////////

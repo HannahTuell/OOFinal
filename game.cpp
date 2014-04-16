@@ -12,7 +12,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 namespace bicycle
 {
-  int  Game::decks()  { return decks_;  }
-  bool Game::jokers() { return jokers_; }
+  short Game::decks()          { return decks_;     }
+  bool  Game::jokers()         { return jokers_;    }
+  short Game::starting_hand()  { return init_hand_; }
+  void  Game::trump( short t ) { trumps_ = t;       }
+  short Game::trump( )         { return trumps_; }
+
 }
 ///////////////////////////////////////////////////////////////////////////////
