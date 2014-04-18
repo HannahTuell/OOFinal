@@ -11,7 +11,7 @@ LIBS = bicycle.a
 # Libraries - Linux
 # GLLIBS = -lglut -lGLU
 # Libraries - OSX
-GLLIBS = -framework GLUT -framework OpenGL 
+GLLIBS = -framework GLUT -framework OpenGL
 # Libraries - MinGW
 # GLLIBS =-lglut32cu -lglu32 -lopengl32
 
