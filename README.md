@@ -43,6 +43,8 @@ Directory
 
 *  `Makefile` Builds the executable
 *  `main.cpp` Starts the Program
+*  `classic-playing-cards.png` [from jfitz][from http://www.jfitz.com/cards/classic-playing-cards.png]
+*  `bicycle-backs.jpg` [from Playing Cards Wiki][http://playingcards.wdfiles.com/local--files/bicycle%3Arider-back/Bicycle%20Rider%20Backs.jpg]
 *  `README.md` This file.
 *  `bicycle.a` This file is an archive of the card game framework.
    - `card.cpp` The basic card class. Stores things like suit, value and rank. 
