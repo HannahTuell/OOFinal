@@ -22,6 +22,8 @@ int main(int argc, char* argv[]) {
 
    //  Initialize GLUT
    glutInit(&argc,argv);
+   // default frame buffers identified
+   glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
    //  Create window
    glutCreateWindow("Hello World");
    //  Register function used to display scene
