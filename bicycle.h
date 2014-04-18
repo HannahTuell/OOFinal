@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// File:   bicycle.h                   Summer 2013
+// File:   bicycle.h                   Spring 2014
 // Author: Patrick Vargas              patrick.vargas@colorado.edu
 // Description:
 //    Provides the declarations for all the necessary classes for card games
@@ -20,8 +20,12 @@ using namespace std;
 
 #define STDDECK   52 // Standard Deck
 #define STDDECKWJ 54 // With Jokers
+
+// Enumeration to help define suits
 enum Suit { SPADES, DIAMONDS, CLUBS, HEARTS, JOKERS };
-struct Point { double x; double y; };
+
+// Point structure to help display cards
+typedef struct { double x; double y; } Point;
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -37,7 +41,7 @@ namespace bicycle
     // Constructor
     //
     Card ( short rankInit = 1, short suitInit = SPADES, bool isFaceUpInit = false, 
-           short valueInit = 0, Point p);
+           short valueInit = 0);
 
     //
     // Member Methods // Getters
@@ -83,7 +87,7 @@ namespace bicycle
     short suit_;      // Suit of Card, enum Suit
     short value_;     // Game value, based upon game bing played
     bool  isFaceUp_;  // Is this card face up?
-    double position_; // What is the card's location on the screen?
+    Point position_; // What is the card's location on the screen?
   };
   //=====================================
 
