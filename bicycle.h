@@ -21,6 +21,7 @@ using namespace std;
 #define STDDECK   52 // Standard Deck
 #define STDDECKWJ 54 // With Jokers
 enum Suit { SPADES, DIAMONDS, CLUBS, HEARTS, JOKERS };
+struct Point { double x; double y; };
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -35,7 +36,8 @@ namespace bicycle
     //
     // Constructor
     //
-    Card ( short rankInit = 1, short suitInit = SPADES, bool isFaceUpInit = false, short valueInit = 0 );
+    Card ( short rankInit = 1, short suitInit = SPADES, bool isFaceUpInit = false, 
+           short valueInit = 0, Point p);
 
     //
     // Member Methods // Getters
@@ -44,6 +46,7 @@ namespace bicycle
     const short rank( );
     const short suit( );
     const short value( );
+    const Point position();
 
     //
     // Member Methods // Setters
@@ -60,6 +63,9 @@ namespace bicycle
     // Pre: Can be any value
     void value( short temp );
 
+    // Pre: Can be any position in the window
+    void position( Point temp );
+
     //
     // Auxiliary Methods
     //
@@ -73,10 +79,11 @@ namespace bicycle
     friend ostream &operator<<( ostream &output, const Card &c );
 
   private:
-    short rank_;     // Rank of Card, 1 - 14
-    short suit_;     // Suit of Card, enum Suit
-    short value_;    // Game value, based upon game bing played
-    bool  isFaceUp_; // Is this card face up?
+    short rank_;      // Rank of Card, 1 - 14
+    short suit_;      // Suit of Card, enum Suit
+    short value_;     // Game value, based upon game bing played
+    bool  isFaceUp_;  // Is this card face up?
+    double position_; // What is the card's location on the screen?
   };
   //=====================================
 
