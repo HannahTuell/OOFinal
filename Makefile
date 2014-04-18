@@ -2,7 +2,7 @@
 
 # Declaration of Variables
 CXX  = g++ 
-FLAGS = -Wall -O2 -arch x86_64
+FLAGS = -Wall -O2 -arch x86_64 -Wno-deprecated
 
 # File Names
 EXEC = cardgame
@@ -31,9 +31,9 @@ bicycle.a: card.o deck.o player.o dealer.o game.o euchre.o
 	@echo // Building $@
 	@ar -rcs $@ $^
 
-# CSCIx229.a: errcheck.o fatal.o loadtexbmp.o print.o project.o
-	# @echo // Building $@
-	# @ar -rcs $@ $^
+CSCIx229.a: errcheck.o fatal.o loadtexbmp.o print.o project.o
+	@echo // Building $@
+	@ar -rcs $@ $^
 
 # Delete unwanted files - Linux or OX/X
 clean:; @rm -f $(wildcard $(EXEC)) $(wildcard *.o) $(wildcard *.a) *~

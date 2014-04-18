@@ -20,8 +20,11 @@
 #ifdef USEGLEW
 #include <GL/glew.h>
 #endif
-#define GL_GLEXT_PROTOTYPES
+
+//#define GL_GLEXT_PROTOTYPES
 #ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
@@ -37,6 +40,23 @@ typedef struct Color {
 } Color;
 
 //[define functions here]
+
+/*
+ * This function is called by GLUT to display the scene
+ */
+void display()
+{
+   //  Clear screen
+   glClear(GL_COLOR_BUFFER_BIT);
+   //  Draw triangle
+   glBegin(GL_POLYGON);
+   glVertex2f( 0.0, 0.5);
+   glVertex2f( 0.5,-0.5);
+   glVertex2f(-0.5,-0.5);
+   glEnd();
+   //  Make scene visible
+   glFlush();
+}
 
 #endif
 //------------------------------------------------------------------------------

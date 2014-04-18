@@ -18,7 +18,18 @@ using namespace std;
 using namespace bicycle;
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() {
+int main(int argc, char* argv[]) {
+
+   //  Initialize GLUT
+   glutInit(&argc,argv);
+   //  Create window
+   glutCreateWindow("Hello World");
+   //  Register function used to display scene
+   glutDisplayFunc(display);
+   //  Pass control to GLUT for events
+   glutMainLoop();
+   //  Return to OS
+   return 0;
 
   Euchre game;
   Dealer joe( game );
@@ -26,6 +37,7 @@ int main() {
   cout << endl << "Your Name, Please: ";
   cin >> name;
   Player me ( name );
+
   joe.user( me );
   joe.play();
 
