@@ -8,7 +8,9 @@ Members
 
 **Hannah Tuell**
 
-*   [hannah.tuell@colorado.edu][tuell]
+*    BS Computer Science, Software Engineering
+*    BA Studio Art, Drawing
+*    [hannah.tuell@colorado.edu][tuell]
 
 **Patrick E. Vargas**
 
@@ -58,6 +60,8 @@ Directory
    - `errcheck.c` ErrCheck
    - `object.c` LoadOBJ
 * `visuals.h` Library interface for drawing a card game
+
+
 
   [tuell]:     mailto:hannah.tuell@colorado.edu
   [vargas]:    mailto:patrick@vargascorpus.com

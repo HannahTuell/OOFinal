@@ -19,20 +19,22 @@ namespace bicycle {
   //   suit: SPADES, DIAMONDS, CLUBS, HEARTS; Spades by default
   //   value: Any value based on game or simulation; 0 by default
   //   isFaceUp: Boolean; False (or down) by default
-  Card::Card ( short rankInit, short suitInit, bool isFaceUpInit, short valueInit ) {
+  Card::Card ( short rankInit, short suitInit, bool isFaceUpInit, short valueInit, Point p) {
     rank_     = rankInit;
     suit_     = suitInit;
     value_    = valueInit;
     isFaceUp_ = isFaceUpInit;
+    position_ = p;
   }
 
   //
   // Member Methods // Getters
   // 
-  const bool  Card::isFaceUp( ) { return isFaceUp_; }
-  const short Card::rank( )     { return rank_;     }
-  const short Card::suit( )     { return suit_;     }
-  const short Card::value( )    { return value_;    }
+  const bool   Card::isFaceUp( ) { return isFaceUp_; }
+  const short  Card::rank( )     { return rank_;     }
+  const short  Card::suit( )     { return suit_;     }
+  const short  Card::value( )    { return value_;    }
+  const Point  Card::position( ) { return position_; }
 
   //
   // Member Methods // Setters
@@ -57,6 +59,9 @@ namespace bicycle {
 
   // Pre: Can be any value
   void Card::value( short temp ) { value_ = temp; }
+
+  // Pre: Can be any position in the window
+  void Card::position( Point temp ) { position_ = temp; }
 
   //
   // Auxiliary Methods
