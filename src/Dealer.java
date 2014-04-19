@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * Created by pevargas90 on 4/19/14.
  */
@@ -20,10 +18,6 @@ public class Dealer {
       ai1_     = new Player( "Scott" );
       ai2_     = new Player( "Ramona" );
 
-      System.out.println( partner_.name() + " has joined the game. This is your partner.");
-      System.out.println( ai1_.name() + " has joined the game. This is your opponent");
-      System.out.println( ai2_.name() + " has joined the game. This is your opponent");
-
       partner_.strategy(new StrategyRandom());
       ai1_.strategy(new StrategyRandom());
       ai2_.strategy(new StrategyRandom());
@@ -35,8 +29,8 @@ public class Dealer {
    */
   public void user( Player user ) {
       user_ = user;
-      System.out.println("Welcome " + user_.name() + "! You have joined the game.");
       user_.strategy(new StrategyHuman());
+      game_.register_player(user_.name());
   }
 
     /**
@@ -47,6 +41,9 @@ public class Dealer {
       game_ = game;
       deck_ = game_.deck();
       System.out.println( "You've chosen to play, \"" + game_.title()+"\""  );
+      game_.register_player(partner_.name());
+      game_.register_player(ai1_.name());
+      game_.register_player(ai2_.name());
   }
 
   /**
@@ -59,6 +56,7 @@ public class Dealer {
       game_.take_card(ai2_.pick_card(game_.trump(), Suit.SPADES));
       game_.take_card(user_.pick_card(game_.trump(), Suit.SPADES));
       print();
+      game_.pick_winner();
   }
 
   /**

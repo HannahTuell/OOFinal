@@ -83,8 +83,9 @@ public abstract class Game {
      * Add player to game
      * @param player
      */
-    public void reigister_player( String player ) {
+    public void register_player(String player) {
         score.put(player, 0);
+        System.out.println( player + " has joined the game.");
     }
 
     /**
@@ -99,7 +100,7 @@ public abstract class Game {
      * Print the state of the board
      */
     public void print() {
-        System.out.print("*** The Game Board ***");
+        System.out.println("*** The Game Board ***");
         if ( board_.isEmpty() )
             System.out.print("No Cards Available");
         else
@@ -108,9 +109,21 @@ public abstract class Game {
         System.out.print("\n");
     }
 
+    public void pick_winner() {
+        String winner = analyze_round( board_ );
+        score.put(winner, score.get(winner) + 1 );
+        System.out.println(winner + " won that round");
+    }
+
     /**
      * Gives the Game specific deck of cards
      * @return Game specific deck
      */
     public abstract Deck deck();
+
+    /**
+     * Analyze who one the round
+     * @return Name of player
+     */
+    public abstract String analyze_round( List<Submission> list );
 }
