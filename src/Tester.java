@@ -17,7 +17,8 @@ public class Tester {
         Player user = new Player(input);
         System.out.println("Welcome " + user.name());
 
-        Deck bicycle = new Deck();
+        Game game = new Euchre();
+        Deck bicycle = new Deck( game.deck() );
         System.out.println("Shuffling Deck");
         bicycle.shuffle();
         for (int i = 0; i < 5; ++i )

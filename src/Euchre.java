@@ -24,8 +24,9 @@ public class Euchre extends Game {
         List<Card> result = new ArrayList<Card>();
         Deck deck = new Deck( decks_, has_jokers_ );
         Integer size = 0;
+        Integer deck_size = deck.size();
 
-        for (int i = 0; i < deck.size(); ++i) {
+        for (int i = 0; i < deck_size; ++i) {
             Suit temp;
             if      (i % deck_size < 13) { temp = Suit.SPADES;   }
             else if (i % deck_size < 26) { temp = Suit.DIAMONDS; }

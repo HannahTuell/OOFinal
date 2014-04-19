@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -25,6 +26,17 @@ public class Deck {
     }
 
     /**
+     * Copy Constructor
+     * @param other The other deck to copy
+     */
+    public Deck ( Deck other ) {
+        has_jokers_ = new Boolean(other.has_jokers());
+        size_       = new Integer(other.size());
+        draw_       = new ArrayList<Card>(other.draw_pile());
+        discard_    = new ArrayList<Card>(other.discard_pile());
+    }
+
+    /**
      * Constructor
      * @param number_of_decks This is the number of full decks to add
      * @param has_jokers Boolean if Jokers are needed
@@ -32,6 +44,8 @@ public class Deck {
     public Deck (int number_of_decks, boolean has_jokers) {
         has_jokers_ = has_jokers;
         size_       = number_of_decks;
+        draw_       = new LinkedList<Card>();
+        discard_    = new LinkedList<Card>();
         determine_size();
         factory_order();
     }
@@ -44,6 +58,18 @@ public class Deck {
         draw_.clear();
         discard_.clear();
         draw_       = new LinkedList<Card>( deck );
+    }
+
+    /**
+     * Get the draw deck
+     * @return The Draw Deck
+     */
+    public List<Card> draw_pile() {
+        return draw_;
+    }
+
+    public List<Card> discard_pile() {
+        return discard_;
     }
 
     /**
@@ -60,6 +86,14 @@ public class Deck {
      */
     public Integer size( ) {
         return size_;
+    }
+
+    /**
+     * Does the deck contain jokers?
+     * @return True or False
+     */
+    public Boolean has_jokers() {
+        return has_jokers_;
     }
 
     /**
@@ -94,7 +128,7 @@ public class Deck {
      * Gets teh number of cards left in the draw pile
      * @return Number of cards left
      */
-    public int cards_left() { return draw_.size(); }
+    public Integer cards_left() { return draw_.size(); }
 
     /**
      * Adds the card given to the discard pile
