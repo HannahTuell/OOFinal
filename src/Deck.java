@@ -68,6 +68,10 @@ public class Deck {
         return draw_;
     }
 
+  /**
+   * Get the discard pile
+   * @return The discard pile
+   */
     public List<Card> discard_pile() {
         return discard_;
     }
@@ -140,6 +144,8 @@ public class Deck {
      * Shuffles the deck
      */
     public void shuffle() {
+        System.out.println("Shuffling Deck");
+
         List<Card> temp = new LinkedList<Card>();
         Random r = new Random();
         int index;
@@ -157,8 +163,7 @@ public class Deck {
      * Combines the discard and draw pile
      */
     public void combine() {
-        // Check if there are any cards in the discard pile
-        if ( discard_.isEmpty() ) return;
+        System.out.println("Combining Decks");
 
         for( Card c : discard_ ) {
             draw_.add(c);
@@ -185,6 +190,9 @@ public class Deck {
         return temp;
     }
 
+    /**
+     * Print the state of the deck
+     */
     public void print() {
         System.out.println("*** Draw Deck ***");
         if ( draw_.isEmpty() )

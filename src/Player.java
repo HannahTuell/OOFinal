@@ -3,6 +3,8 @@ import java.util.List;
 
 /**
  * Created by pevargas90 on 4/18/14.
+ *
+ * Provides a basic player class for use in a card game program or simulation.
  */
 public abstract class Player {
 
@@ -59,6 +61,9 @@ public abstract class Player {
         hand_.clear();
     }
 
+    /**
+     * Print the state of the player's hand
+    */
     public void print() {
         System.out.print(name_ + "'s Hand: ");
         if ( hand_.isEmpty() )
@@ -69,5 +74,9 @@ public abstract class Player {
         System.out.print("\n");
     }
 
+    /**
+     * Pick a card to play. Instantiated for AI players and Users
+     * @return
+     */
     public abstract Card pick_card();
 }
