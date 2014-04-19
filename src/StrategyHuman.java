@@ -8,7 +8,7 @@ public class StrategyHuman implements Strategy {
 
     public Integer pick_card( List<Card> hand, Suit trump, Suit round ) {
         Integer index;
-        print( hand );
+//        print( hand );
         Scanner console = new Scanner(System.in);
         System.out.print("Card Choice? [0-"+new Integer(hand.size()-1).toString()+"]: ");
         index = console.nextInt();

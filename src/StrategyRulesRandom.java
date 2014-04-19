@@ -15,15 +15,22 @@ public class StrategyRulesRandom implements Strategy {
 
     public Integer pick_card( List<Card> hand, Suit trump, Suit round ) {
         Integer index;
-        if ( trump != null ) {
-            List<Card> options = is_suit(hand, trump);
-            index = randy_.nextInt( options.size() );
-            return hand.indexOf( options.get(index) );
-        }
         if ( round != null ) {
             List<Card> options = is_suit(hand, round);
-            index = randy_.nextInt( options.size() );
-            return hand.indexOf( options.get(index) );
+            if ( !options.isEmpty() ) {
+                index = randy_.nextInt( options.size() );
+                return hand.indexOf( options.get(index) );
+            }
+        }
+        else {
+            return randy_.nextInt( hand.size() );
+        }
+        if ( trump != null ) {
+            List<Card> options = is_suit(hand, trump);
+            if ( !options.isEmpty() ) {
+                index = randy_.nextInt( options.size() );
+                return hand.indexOf( options.get(index) );
+            }
         }
         return randy_.nextInt( hand.size() );
     }

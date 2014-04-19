@@ -97,6 +97,16 @@ public abstract class Game {
     }
 
     /**
+     * Pick the winner and display them
+     */
+    public void pick_winner() {
+        String winner = analyze_round( board_ );
+        score.put(winner, score.get(winner) + 1 );
+        System.out.println(winner + " won that round");
+        print_scores();
+    }
+
+    /**
      * Print the state of the board
      */
     public void print() {
@@ -109,10 +119,11 @@ public abstract class Game {
         System.out.print("\n");
     }
 
-    public void pick_winner() {
-        String winner = analyze_round( board_ );
-        score.put(winner, score.get(winner) + 1 );
-        System.out.println(winner + " won that round");
+    public void print_scores() {
+        System.out.println("============ Scores ============");
+        for (Map.Entry<String, Integer> user : score.entrySet())
+            System.out.print("["+user.getKey() + ":" + user.getValue()+"]");
+        System.out.print("\n");
     }
 
     /**
