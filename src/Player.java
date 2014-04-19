@@ -72,6 +72,16 @@ public class Player {
     }
 
     /**
+     * Pick a card to play.
+     * @return Card to be played
+     */
+    public Submission pick_card( Suit trump, Suit round ) {
+        Card temp = hand_.get( strat_.pick_card( hand_, trump, round ) );
+        hand_.remove( temp );
+        return new Submission( name(), temp );
+    }
+
+    /**
      * Print the state of the player's hand
     */
     public void print() {
@@ -82,15 +92,5 @@ public class Player {
             for ( Card c : hand_ )
                 System.out.print(c.toString() + ", ");
         System.out.print("\n");
-    }
-
-    /**
-     * Pick a card to play.
-     * @return Card to be used
-     */
-    public Card pick_card( Suit trump, Suit round ) {
-        Card temp = hand_.get( strat_.pick_card( hand_, trump, round ) );
-        hand_.remove( temp );
-        return temp;
     }
 }

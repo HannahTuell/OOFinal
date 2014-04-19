@@ -13,6 +13,7 @@ public abstract class Game {
     private Boolean has_jokers_;
     private Integer deal_number_;
     private Suit    trumps_;
+    private List<Submission>       board_;
     protected Map<String, Integer> score;
 
     /**
@@ -20,6 +21,7 @@ public abstract class Game {
      */
     public Game(String name, int decks, boolean has_jokers, int deal_number) {
         score        = new HashMap<String, Integer>();
+        board_       = new LinkedList<Submission>();
         title_       = name;
         decks_       = decks;
         has_jokers_  = has_jokers;
@@ -83,6 +85,27 @@ public abstract class Game {
      */
     public void reigister_player( String player ) {
         score.put(player, 0);
+    }
+
+    /**
+     * Take Cards from players
+     * @param sub A submission object
+     */
+    public void take_card( Submission sub ) {
+        board_.add(sub);
+    }
+
+    /**
+     * Print the state of the board
+     */
+    public void print() {
+        System.out.print("*** The Game Board ***");
+        if ( board_.isEmpty() )
+            System.out.print("No Cards Available");
+        else
+            for ( Submission s : board_ )
+                System.out.print("["+s.who + ":" + s.card.toString() +"]");
+        System.out.print("\n");
     }
 
     /**

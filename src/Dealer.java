@@ -7,7 +7,6 @@ public class Dealer {
 
   private Game game_;
   private Deck deck_;
-  private Player board_;
   private Player user_;
   private Player partner_;
   private Player ai1_;
@@ -17,7 +16,6 @@ public class Dealer {
    * Constructor
    */
   public Dealer( ) {
-      board_   = new Player( "Board" );
       partner_ = new Player( "Wallace" );
       ai1_     = new Player( "Scott" );
       ai2_     = new Player( "Ramona" );
@@ -56,10 +54,10 @@ public class Dealer {
    */
   public void play() {
       deal_round();
-      board_.take_card(ai1_.pick_card(game_.trump(), Suit.SPADES));
-      board_.take_card(partner_.pick_card(game_.trump(), Suit.SPADES));
-      board_.take_card(ai2_.pick_card(game_.trump(), Suit.SPADES));
-      board_.take_card(user_.pick_card(game_.trump(), Suit.SPADES));
+      game_.take_card(ai1_.pick_card(game_.trump(), Suit.SPADES));
+      game_.take_card(partner_.pick_card(game_.trump(), Suit.SPADES));
+      game_.take_card(ai2_.pick_card(game_.trump(), Suit.SPADES));
+      game_.take_card(user_.pick_card(game_.trump(), Suit.SPADES));
       print();
   }
 
@@ -88,7 +86,7 @@ public class Dealer {
       }
 
       deck_.print();
-      board_.print();
+      game_.print();
       user_.print();
       ai1_.print();
       partner_.print();
