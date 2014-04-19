@@ -1,13 +1,31 @@
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by pevargas90 on 4/18/14.
  */
 public abstract class Game {
 
-    protected Integer decks_;
-    protected Boolean has_jokers_;
-    protected Integer deal_number_;
-    protected Suit    trumps_;
-    protected String  title_;
+    private String  title_;
+    private Integer decks_;
+    private Boolean has_jokers_;
+    private Integer deal_number_;
+    private Suit    trumps_;
+    protected Map<String, Integer> score;
+
+    /**
+     * Constructor
+     */
+    public Game(String name, int decks, boolean has_jokers, int deal_number) {
+        score        = new HashMap<String, Integer>();
+        title_       = name;
+        decks_       = decks;
+        has_jokers_  = has_jokers;
+        deal_number_ = deal_number;
+        trumps_      = Suit.JOKERS;
+    }
 
     /**
      * Get the number of decks needed
@@ -51,12 +69,20 @@ public abstract class Game {
         trumps_ = s;
     }
 
-  /**
-   * Get the name of the game.
-   * @return The name of the game
-   */
+    /**
+     * Get the name of the game.
+     * @return The name of the game
+     */
     public String title () {
       return title_;
+    }
+
+    /**
+     * Add player to game
+     * @param player
+     */
+    public void reigister_player( String player ) {
+        score.put(player, 0);
     }
 
     /**

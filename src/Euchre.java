@@ -10,11 +10,12 @@ public class Euchre extends Game {
      * Constructor
      */
     public Euchre() {
-        decks_       = 1;
-        has_jokers_  = false;
-        deal_number_ = 5;
-        trumps_      = Suit.JOKERS;
-        title_       = "Euchre";
+        super(
+                "Euchre", // Name of Game
+                1,        // Number of Decks
+                false,    // Has Jokers
+                5         // Deal Number
+        );
     }
 
     /**
@@ -23,7 +24,7 @@ public class Euchre extends Game {
      */
     public Deck deck() {
         List<Card> result = new ArrayList<Card>();
-        Deck deck = new Deck( decks_, has_jokers_ );
+        Deck deck = new Deck( decks(), has_jokers() );
         Integer size = 0;
         Integer deck_size = deck.size();
 
@@ -55,5 +56,6 @@ public class Euchre extends Game {
 
         return deck;
     }
+
 
 }

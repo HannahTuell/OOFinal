@@ -6,10 +6,11 @@ import java.util.List;
  *
  * Provides a basic player class for use in a card game program or simulation.
  */
-public abstract class Player {
+public class Player {
 
     private List<Card> hand_;
     private String     name_;
+    private Strategy   strat_;
 
     /**
      * Constructor
@@ -27,6 +28,15 @@ public abstract class Player {
     public Player( String name ) {
         name_ = name;
         hand_ = new LinkedList<Card>();
+    }
+
+    /**
+     * Set the strategy for this player
+     * @param strat The strategy to be used
+     * @see Strategy
+     */
+    public void strategy( Strategy strat ) {
+        strat_ = strat;
     }
 
     /**
@@ -75,8 +85,12 @@ public abstract class Player {
     }
 
     /**
-     * Pick a card to play. Instantiated for AI players and Users
-     * @return
+     * Pick a card to play.
+     * @return Card to be used
      */
-    public abstract Card pick_card();
+    public Card pick_card( Suit trump, Suit round ) {
+        Card temp = hand_.get( strat_.pick_card( hand_, trump, round ) );
+        hand_.remove( temp );
+        return temp;
+    }
 }
