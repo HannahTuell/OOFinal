@@ -81,11 +81,13 @@ public class Deck {
      */
     public void shuffle() {
         List<Card> temp = new LinkedList<Card>();
+        Random r = new Random();
+        int index;
 
         while ( !draw_.isEmpty() ) {
-            Random r = new Random();
-            temp.add( draw_.get(r.nextInt() % draw_.size()) );
-            draw_.remove( r );
+            index = r.nextInt( draw_.size() );
+            temp.add( draw_.get( index ) );
+            draw_.remove( index );
         }
 
         draw_ = new LinkedList<Card>(temp);
@@ -121,5 +123,21 @@ public class Deck {
         temp = draw_.get(0);
         draw_.remove(0);
         return temp;
+    }
+
+    public void print() {
+        System.out.println("*** Draw Deck ***");
+        if ( draw_.isEmpty() )
+            System.out.print("No Cards Available");
+        else
+            for ( Card c : draw_ )
+                System.out.print(c.toString() + ", ");
+        System.out.println("\n*** Discard Deck *** ");
+        if ( discard_.isEmpty() )
+            System.out.print("No Cards Available");
+        else
+            for ( Card c : discard_ )
+                System.out.print(c.toString() + ", ");
+        System.out.print("\n");
     }
 }

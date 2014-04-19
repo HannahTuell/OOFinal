@@ -4,10 +4,10 @@
  * Provides a basic card class for use in a card game program or simulation.
  */
 public class Card {
-    private int     rank_;
+    private Integer rank_;
     private Suit    suit_;
-    private int     value_;
-    private boolean is_face_up_;
+    private Integer value_;
+    private Boolean is_face_up_;
 
     /**
      * Constructor
@@ -58,7 +58,7 @@ public class Card {
      * Sets the rank
      * @param rank The rank value
      */
-    public void rank(short rank) {
+    public void rank(int rank) {
         rank_ = rank;
     }
 
@@ -92,7 +92,7 @@ public class Card {
      * Sets the value
      * @param value The value value
      */
-    public void value(short value) {
+    public void value(int value) {
         value_ = value;
     }
 
@@ -117,5 +117,58 @@ public class Card {
      */
     public void flip() {
         is_face_up_ = !is_face_up_;
+    }
+
+    /**
+     * Converts card to string representation
+     * @return String of information
+     */
+    public String toString() {
+        String temp;
+
+        switch ( rank_ ) {
+            case 14: temp = "O"; break;
+            case 13: temp = "K"; break;
+            case 12: temp = "Q"; break;
+            case 11: temp = "J"; break;
+            case 1:  temp = "A"; break;
+            default: temp = rank_.toString(); break;
+        }
+        switch ( suit_ ) {
+            case SPADES:   temp += "S"; break;
+            case DIAMONDS: temp += "D"; break;
+            case CLUBS:    temp += "C"; break;
+            case HEARTS:   temp += "H"; break;
+            case JOKERS:   temp += "J"; break;
+            default:       temp += "O"; break;
+        }
+
+        return temp;
+    }
+
+    /**
+     * Prints to command line
+     */
+    public void print() {
+        String temp;
+        switch ( rank_ ) {
+            case 14: temp = "Joker"; break;
+            case 13: temp = "King"; break;
+            case 12: temp = "Queen"; break;
+            case 11: temp = "Jack"; break;
+            case 1:  temp = "Ace"; break;
+            default: temp = rank_.toString(); break;
+        }
+        System.out.print(temp + " of ");
+
+        switch ( suit_ ) {
+            case SPADES:   temp = "Spades"; break;
+            case DIAMONDS: temp = "Diamonds"; break;
+            case CLUBS:    temp = "Clubs"; break;
+            case HEARTS:   temp = "Hearts"; break;
+            case JOKERS:   temp = "Jokers"; break;
+            default:       temp = "Other"; break;
+        }
+        System.out.println(temp);
     }
 }
