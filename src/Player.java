@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by pevargas90 on 4/18/14.
  */
-public class Player {
+public abstract class Player {
 
     private List<Card> hand_;
     private String     name_;
@@ -68,4 +68,6 @@ public class Player {
                 System.out.print(c.toString() + ", ");
         System.out.print("\n");
     }
+
+    public abstract Card pick_card();
 }

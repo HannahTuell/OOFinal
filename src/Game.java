@@ -7,6 +7,7 @@ public abstract class Game {
     protected Boolean has_jokers_;
     protected Integer deal_number_;
     protected Suit    trumps_;
+    protected String  title_;
 
     /**
      * Get the number of decks needed
@@ -48,6 +49,14 @@ public abstract class Game {
      */
     public void trump ( Suit s ) {
         trumps_ = s;
+    }
+
+  /**
+   * Get the name of the game.
+   * @return The name of the game
+   */
+    public String title () {
+      return title_;
     }
 
     /**

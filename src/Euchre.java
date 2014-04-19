@@ -14,6 +14,7 @@ public class Euchre extends Game {
         has_jokers_  = false;
         deal_number_ = 5;
         trumps_      = Suit.JOKERS;
+        title_       = "Euchre";
     }
 
     /**
