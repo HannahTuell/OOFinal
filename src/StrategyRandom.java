@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +14,6 @@ public class StrategyRandom implements Strategy {
     }
 
     public Integer pick_card( List<Card> hand, Suit trump, Suit round ) {
-        Integer index = randy_.nextInt( hand.size() );
-        return index;
+        return randy_.nextInt( hand.size() );
     }
 }

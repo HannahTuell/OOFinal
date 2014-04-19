@@ -50,7 +50,8 @@ public class Euchre extends Game {
                 case 12:
                 case 13:
                     size++;
-                    result.add(new Card((i % 13) + 1, temp));
+                    if ( i == 1 ) result.add(new Card(14, temp));
+                    else          result.add(new Card((i % 13) + 1, temp));
                     break;
             }
         }

@@ -18,7 +18,7 @@ public class Dealer {
       ai1_     = new Player( "Scott" );
       ai2_     = new Player( "Ramona" );
 
-      partner_.strategy(new StrategyRandom());
+      partner_.strategy(new StrategyRulesRandom());
       ai1_.strategy(new StrategyRandom());
       ai2_.strategy(new StrategyRandom());
   }
@@ -51,10 +51,15 @@ public class Dealer {
    */
   public void play() {
       deal_round();
-      game_.take_card(ai1_.pick_card(game_.trump(), Suit.SPADES));
-      game_.take_card(partner_.pick_card(game_.trump(), Suit.SPADES));
-      game_.take_card(ai2_.pick_card(game_.trump(), Suit.SPADES));
-      game_.take_card(user_.pick_card(game_.trump(), Suit.SPADES));
+      Suit round = null;
+      Submission temp;
+      game_.take_card( (temp = ai1_.pick_card(game_.trump(), round) ));
+      round = temp.card.suit();
+      game_.take_card(partner_.pick_card(game_.trump(), round));
+      game_.take_card(ai2_.pick_card(game_.trump(), round));
+
+      print();
+      game_.take_card(user_.pick_card(game_.trump(), round));
       print();
       game_.pick_winner();
   }
