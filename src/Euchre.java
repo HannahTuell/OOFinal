@@ -6,6 +6,9 @@ import java.util.List;
  */
 public class Euchre extends Game {
 
+    /**
+     * Constructor
+     */
     public Euchre() {
         decks_       = 1;
         has_jokers_  = false;
@@ -13,6 +16,10 @@ public class Euchre extends Game {
         trumps_      = Suit.JOKERS;
     }
 
+    /**
+     * Gives the Game specific deck of cards
+     * @return Game specific deck
+     */
     public Deck deck() {
         List<Card> result = new ArrayList<Card>();
         Deck deck = new Deck( decks_, has_jokers_ );

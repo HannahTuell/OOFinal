@@ -50,5 +50,9 @@ public abstract class Game {
         trumps_ = s;
     }
 
+    /**
+     * Gives the Game specific deck of cards
+     * @return Game specific deck
+     */
     public abstract Deck deck();
 }

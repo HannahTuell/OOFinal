@@ -9,8 +9,8 @@ import java.util.Random;
 public class Deck {
     private List<Card> draw_;      // Draw Pile
     private List<Card> discard_;   // Discard Pile
-    private boolean    has_jokers_; // If jokers are in play
-    private int        size_;      // Total number of cards in play
+    private Boolean    has_jokers_; // If jokers are in play
+    private Integer    size_;      // Total number of cards in play
 
     /**
      * Constructor
@@ -34,6 +34,32 @@ public class Deck {
         size_       = number_of_decks;
         determine_size();
         factory_order();
+    }
+
+    /**
+     * Set the draw deck with the one passed in.
+     * @param deck The new deck to be used.
+     */
+    public void draw( List<Card> deck ) {
+        draw_.clear();
+        discard_.clear();
+        draw_       = new LinkedList<Card>( deck );
+    }
+
+    /**
+     * Sets the size of the deck;
+     * @param size Number of cards
+     */
+    public void size( Integer size ) {
+        size_ = size;
+    }
+
+    /**
+     * Gets the total number of cards in deck
+     * @return Number of cards
+     */
+    public Integer size( ) {
+        return size_;
     }
 
     /**
