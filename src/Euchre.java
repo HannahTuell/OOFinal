@@ -17,7 +17,8 @@ public class Euchre extends Game {
                 "Euchre", // Name of Game
                 1,        // Number of Decks
                 false,    // Has Jokers
-                5         // Deal Number
+                5,        // Deal Number
+                10        // Winning game score
         );
     }
 

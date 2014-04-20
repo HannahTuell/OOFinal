@@ -13,20 +13,22 @@ public abstract class Game {
     private Boolean has_jokers_;
     private Integer deal_number_;
     private Suit    trumps_;
+    private Integer winning_score_;
     private List<Submission>       board_;
     protected Map<String, Integer> score;
 
     /**
      * Constructor
      */
-    public Game(String name, int decks, boolean has_jokers, int deal_number) {
-        score        = new HashMap<String, Integer>();
-        board_       = new LinkedList<Submission>();
-        title_       = name;
-        decks_       = decks;
-        has_jokers_  = has_jokers;
-        deal_number_ = deal_number;
-        trumps_      = Suit.JOKERS;
+    public Game(String name, int decks, boolean has_jokers, int deal_number, int winning_score) {
+        score          = new HashMap<String, Integer>();
+        board_         = new LinkedList<Submission>();
+        title_         = name;
+        decks_         = decks;
+        has_jokers_    = has_jokers;
+        deal_number_   = deal_number;
+        winning_score_ = winning_score;
+        trumps_        = Suit.JOKERS;
     }
 
     /**
@@ -104,6 +106,28 @@ public abstract class Game {
         score.put(winner, score.get(winner) + 1 );
         System.out.println(winner + " won that round");
         print_scores();
+    }
+
+    /**
+     * Determine if someone has reached the score level.
+     * @return
+     */
+    public Boolean is_game_win() {
+        for ( Map.Entry<String, Integer> entry : score.entrySet())
+            if ( entry.getValue() >= winning_score_) return true;
+        return false;
+    }
+
+    /**
+     * The player's hand has been added to the discard pile
+     * @param deck The deck in play
+     */
+    public void clear_hand( Deck deck ) {
+        for( Submission s : board_ ) {
+            deck.discard( s.card );
+        }
+
+        board_.clear();
     }
 
     /**

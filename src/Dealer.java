@@ -3,8 +3,8 @@
  */
 public class Dealer {
 
-  private Game game_;
-  private Deck deck_;
+  private Game   game_;
+  private Deck   deck_;
   private Player user_;
   private Player partner_;
   private Player ai1_;
@@ -50,18 +50,26 @@ public class Dealer {
    * Play the game specified by the game_ attribute
    */
   public void play() {
-      deal_round();
-      Suit round = null;
-      Submission temp;
-      game_.take_card( (temp = ai1_.pick_card(game_.trump(), round) ));
-      round = temp.card.suit();
-      game_.take_card(partner_.pick_card(game_.trump(), round));
-      game_.take_card(ai2_.pick_card(game_.trump(), round));
 
-      print();
-      game_.take_card(user_.pick_card(game_.trump(), round));
-      print();
-      game_.pick_winner();
+      while( !game_.is_game_win() ) {
+
+          if ( partner_.cards_in_hand() == 0 ) {
+              deal_round();
+          }
+
+          Suit round = null;
+          Submission temp;
+          game_.take_card( (temp = ai1_.pick_card(game_.trump(), round) ));
+          round = temp.card.suit();
+          game_.take_card(partner_.pick_card(game_.trump(), round));
+          game_.take_card(ai2_.pick_card(game_.trump(), round));
+
+          print();
+          game_.take_card(user_.pick_card(game_.trump(), round));
+          game_.pick_winner();
+
+          game_.clear_hand(deck_);
+      }
   }
 
   /**
@@ -90,9 +98,9 @@ public class Dealer {
 
       deck_.print();
       game_.print();
-      user_.print();
       ai1_.print();
       partner_.print();
       ai2_.print();
+      user_.print();
   }
 }
