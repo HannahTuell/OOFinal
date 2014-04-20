@@ -53,6 +53,8 @@ public class Dealer {
 
       while( !game_.is_game_win() ) {
 
+          // This is for Euchre Game play. Comment it out to make other game process.
+          // I need to switch to another project for now. Thanks!
           if ( partner_.cards_in_hand() == 0 ) {
               deal_round();
           }
@@ -69,6 +71,8 @@ public class Dealer {
           game_.pick_winner();
 
           game_.clear_hand(deck_);
+
+          // End Comment
       }
   }
 
