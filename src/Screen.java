@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.lang.String;
 
 
@@ -56,6 +57,8 @@ public class Screen{
 }
 /*
 =======
+=======
+>>>>>>> 5c62be3f17a714069a1cc257ddddaa8705826949
 //package components;
 //
 //import javax.swing.*;
@@ -86,6 +89,10 @@ public class Screen{
 //        //5. Show it.
 //        frame.setVisible(true);
 //    }
+<<<<<<< HEAD
 //}
 >>>>>>> bc226859088d67abfdf3aa6449c72e907b77da01
 */
+=======
+//}
+>>>>>>> 5c62be3f17a714069a1cc257ddddaa8705826949

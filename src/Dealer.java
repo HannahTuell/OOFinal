@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by pevargas90 on 4/19/14.
  */
@@ -5,22 +8,13 @@ public class Dealer {
 
   private Game   game_;
   private Deck   deck_;
-  private Player user_;
-  private Player partner_;
-  private Player ai1_;
-  private Player ai2_;
+  private List<Player> players_;
 
   /**
    * Constructor
    */
   public Dealer( ) {
-      partner_ = new Player( "Wallace" );
-      ai1_     = new Player( "Scott" );
-      ai2_     = new Player( "Ramona" );
-
-      partner_.strategy(new StrategyRulesRandom());
-      ai1_.strategy(new StrategyRandom());
-      ai2_.strategy(new StrategyRandom());
+      players_ = new ArrayList<Player>();
   }
 
   /**
@@ -28,51 +22,81 @@ public class Dealer {
    * @param user
    */
   public void user( Player user ) {
-      user_ = user;
-      user_.strategy(new StrategyHuman());
-      game_.register_player(user_.name());
+      user.strategy( new StrategyHuman() );
+      game_.register_player( user.name() );
+      players_.add( user );
   }
 
-    /**
-     * Set the game to be used
-     * @param game The game
-     */
+  /**
+   * Set the game to be used
+   * @param game The game
+   */
   public void game( Game game ) {
       game_ = game;
       deck_ = game_.deck();
       System.out.println( "You've chosen to play, \"" + game_.title()+"\""  );
-      game_.register_player(partner_.name());
-      game_.register_player(ai1_.name());
-      game_.register_player(ai2_.name());
+      players_ = game_.get_opponents();
   }
 
   /**
    * Play the game specified by the game_ attribute
    */
   public void play() {
-
       while( !game_.is_game_win() ) {
-
-          // This is for Euchre Game play. Comment it out to make other game process.
-          // I need to switch to another project for now. Thanks!
-          if ( partner_.cards_in_hand() == 0 ) {
-              deal_round();
-          }
+          deal_round();
 
           Suit round = null;
           Submission temp;
-          game_.take_card( (temp = ai1_.pick_card(game_.trump(), round) ));
-          round = temp.card.suit();
-          game_.take_card(partner_.pick_card(game_.trump(), round));
-          game_.take_card(ai2_.pick_card(game_.trump(), round));
+          for ( Player player : players_ ) {
+              if ( player.is_human() ) {
+                  print();
+              }
 
-          print();
-          game_.take_card(user_.pick_card(game_.trump(), round));
-          game_.pick_winner();
+              // Player will draw a card from the draw pile
+              if ( game_.turn_.draw() ) {
+                  player.take_card( deck_.draw() );
+              }
+              // Player will pick a card to play
+              if ( game_.turn_.play() ) {
+                  temp = player.pick_card(game_.trump(), round);
+                  if (round == null) {
+                      round = temp.card.suit();
+                  }
+                  game_.take_card(temp);
+              }
+              // Player will discard a card
+              if ( game_.turn_.discard() ) {
+                  // Discard a card
+              }
+          }
 
-          game_.clear_hand(deck_);
+          String winner;
 
-          // End Comment
+          do {
+              winner = game_.pick_winner();
+              if (winner == null) {
+                  for (int i = 0; i < 3; i++) {
+                      for (Player player : players_) {
+                          game_.take_card(player.pick_card(null, null));
+                      }
+                  }
+              }
+          } while( winner == null );
+
+          // If the game requires the cards on the board be given to the winner of the round
+          if ( game_.turn_.collect() ) {
+              for(Player player : players_) {
+                  if ( player.name() == winner) {
+                      for ( Card card : game_.collect_hand()) {
+                          player.take_card( card );
+                      }
+                  }
+              }
+          }
+          else {
+              game_.clear_hand(deck_);
+          }
+
       }
   }
 
@@ -80,31 +104,37 @@ public class Dealer {
    * Deal the round
    */
   public void deal_round() {
-      deck_.combine();
-      for (int i = 0; i < game_.deal_number(); ++i ) {
-          user_.take_card( deck_.draw() );
-          ai1_.take_card( deck_.draw() );
-          partner_.take_card( deck_.draw() );
-          ai2_.take_card( deck_.draw() );
+      if ( players_.get(0).cards_in_hand() == 0 ) {
+          deck_.combine();
+          for (int i = 0; i < game_.deal_number(); ++i ) {
+              for (Player player : players_) {
+                  player.take_card(deck_.draw());
+              }
+          }
+          if ( game_.turn_.trump() ) {
+              if ( deck_.cards_left() > 0 ) {
+                  Card trump = deck_.draw();
+                  game_.trump(trump.suit());
+                  deck_.discard(trump);
+              }
+          }
       }
-      Card trump = deck_.draw();
-      game_.trump( trump.suit() );
-      deck_.discard(trump);
+
   }
 
   /**
    * Print the current state of the game
    */
   public void print() {
-      if ( game_.trump() != Suit.JOKERS ) {
-          System.out.println( "The trump is: " + game_.trump() );
-      }
-
       deck_.print();
       game_.print();
-      ai1_.print();
-      partner_.print();
-      ai2_.print();
-      user_.print();
+
+      if ( game_.turn_.trump() ) {
+          System.out.println( "The trump is: " + game_.trump() );
+          System.out.println( "The round is: " + game_.round() );
+      }
+
+      for ( Player player : players_ )
+        player.print();
   }
 }

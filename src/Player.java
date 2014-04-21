@@ -11,6 +11,7 @@ public class Player {
     private List<Card> hand_;
     private String     name_;
     private Strategy   strat_;
+    private Boolean    is_human_;
 
     /**
      * Constructor
@@ -37,6 +38,20 @@ public class Player {
      */
     public void strategy( Strategy strat ) {
         strat_ = strat;
+        if ( strat.getClass() == new StrategyHuman().getClass() ) {
+            is_human_ = true;
+        }
+        else {
+            is_human_ = false;
+        }
+    }
+
+    /**
+     * Return is user is human. (Needed for when to display state of game)
+     * @return True or False.
+     */
+    public Boolean is_human() {
+        return is_human_;
     }
 
     /**

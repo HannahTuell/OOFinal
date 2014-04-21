@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hannahtuell on 4/19/14.
@@ -7,17 +8,34 @@ import java.util.List;
  */
 public class War extends Game {
 
-
     /**
      * Constructor
      */
     public War() {
         super(
                 "War", // Name of Game
+<<<<<<< HEAD
                 1,       // Number of Decks
                 false,   // Has Jokers
                 26,       // Deal Number: 2 Players, half the deck each
                 3
+=======
+                2,     // Number of Players including user
+                new StrategyPickFirst(), // The strategy for the AI players
+                1,     // Number of Decks
+                false, // Has Jokers
+                26,    // Deal Number: 2 Players, half the deck each
+                26,    // Init Score
+                0      // Winning Score
+        );
+        // Set Turn structure of the game
+        turn_ = new TurnPattern(
+                false, // If players need to draw
+                true,  // If players need to play a card
+                false, // If players need to discard a card
+                true, // If players need to collect cards
+                false   // If players need a trump to play by
+>>>>>>> 5c62be3f17a714069a1cc257ddddaa8705826949
         );
     }
 
@@ -27,14 +45,14 @@ public class War extends Game {
      */
     @Override
     public Deck deck() {
-        // builds a new deck with the nu,ber of decks specified and whether or not we want jokers
+        // builds a new deck with the number of decks specified and whether or not we want jokers
         Deck deck = new Deck( decks(), has_jokers() );
         return deck;
     }
 
     /**
      * Analyze who won the round
-     * @return winner's name
+     * @return The name of the player who won
      */
     @Override
     public String analyze_round( List<Submission> list ) {
@@ -48,18 +66,45 @@ public class War extends Game {
 
         if (p1Rank > p2Rank) {
 
-            return p1.who + " wins this round!";
+            return p1.who;
+        }
+        else {
+            return p2.who;
         }
 
-        if (p1Rank < p2Rank) {
-            return p2.who + " wins this round!";
-        }
+//        if (p1Rank < p2Rank) {
+//            return p2.who;
+//        }
 
-        if (p1Rank == p2Rank) {
-
-            return "This round was a tie -- War!";
-        }
+//        if (p1Rank == p2Rank) {
+//            return null;
+//        }
 
         return null;
+    }
+
+    /**
+     * Pick the winner and display them
+     * @return The name of the winner
+     */
+    @Override
+    public String pick_winner() {
+        String winner = super.pick_winner();
+        for ( Map.Entry<String, Integer> entry : score.entrySet() ) {
+            if ( entry.getKey() != winner )
+                score.put(entry.getKey(), entry.getValue() - 1 );
+        }
+        return winner;
+    }
+
+    /**
+     * Determine if someone has won
+     * @return True or False
+     */
+    @Override
+    public Boolean is_game_win() {
+        for ( Map.Entry<String, Integer> entry : score.entrySet())
+            if ( entry.getValue() == 0) return true;
+        return false;
     }
 }
