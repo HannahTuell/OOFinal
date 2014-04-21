@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class Tester {
 
     public static void main( String[] args ) {
+        Screen sc = new Screen();
+        
         Scanner console = new Scanner(System.in);
 //        Console console = System.console();
         Dealer joe = new Dealer( );
