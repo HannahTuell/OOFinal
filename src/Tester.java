@@ -6,17 +6,7 @@ import java.util.Scanner;
  */
 
 public class Tester {
-<<<<<<< HEAD
 
-
-
-    public static void main(String[] args) {
-        //System.out.println("Suprise Bitch");
-        Screen sc = new Screen();
-    }
-    /*
-=======
->>>>>>> 5c62be3f17a714069a1cc257ddddaa8705826949
     public static void main( String[] args ) {
         Scanner console = new Scanner(System.in);
 //        Console console = System.console();
@@ -38,13 +28,7 @@ public class Tester {
         String name = console.next();
 
         joe.user( new Player( name ) );
-
-<<<<<<< HEAD
-      joe.play();
-=======
         joe.play();
->>>>>>> 5c62be3f17a714069a1cc257ddddaa8705826949
     }
-    */
 
 }
