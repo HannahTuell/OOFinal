@@ -15,10 +15,22 @@ public class Euchre extends Game {
     public Euchre() {
         super(
                 "Euchre", // Name of Game
+                4,        // Number of Players including user
+                new StrategyRulesRandom(), // The strategy for the AI players
                 1,        // Number of Decks
                 false,    // Has Jokers
                 5,        // Deal Number
+                0,        // Init score
                 10        // Winning game score
+        );
+
+        // Set Turn structure of the game
+        turn_ = new TurnPattern(
+                false, // If players need to draw
+                true,  // If players need to play a card
+                false, // If players need to discard a card
+                false, // If players need to collect cards
+                true   // If players need a trump to play by
         );
     }
 
@@ -65,7 +77,7 @@ public class Euchre extends Game {
 
     /**
      * Analyze who won the round
-     * @return
+     * @return The name of the player who won
      */
     @Override
     public String analyze_round( List<Submission> list ) {

@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.Scanner;
 
 /**
@@ -6,17 +7,28 @@ import java.util.Scanner;
 
 public class Tester {
     public static void main( String[] args ) {
-      Game game = new Euchre();
-      Dealer joe = new Dealer( );
-      joe.game( game );
-      Scanner console = new Scanner(System.in);
+        Scanner console = new Scanner(System.in);
+//        Console console = System.console();
+        Dealer joe = new Dealer( );
+        Game game;
+        System.out.println("Available Games");
+        System.out.println("\t0: Euchre");
+        System.out.println("\t1: War");
+//        String selection = console.readLine("Please Pick a Game: ");
+        System.out.print("Please Pick a Game: ");
+        String selection = console.next();
+        if ( selection.matches("1") ) { game = new War();    }
+        else                          { game = new Euchre(); }
+        joe.game(game);
 
-      System.out.print("What is your name? ");
-      System.out.flush();
-      String input = console.nextLine();
-      joe.user( new Player( input ) );
+//        console.flush();
+//        String name = console.readLine("\nWhat is your name? ");
+        System.out.print("\nWhat is your name? ");
+        String name = console.next();
 
-      joe.play();
+        joe.user( new Player( name ) );
+
+        joe.play();
     }
 
 }

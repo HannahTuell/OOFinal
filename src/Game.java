@@ -1,34 +1,38 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by pevargas90 on 4/18/14.
  */
 public abstract class Game {
 
-    private String  title_;
-    private Integer decks_;
-    private Boolean has_jokers_;
-    private Integer deal_number_;
-    private Suit    trumps_;
-    private Integer winning_score_;
+    private String      title_;
+    private Integer     decks_;
+    private Boolean     has_jokers_;
+    private Integer     deal_number_;
+    private Suit        trumps_;
+    private Integer     init_score_;
+    private Integer     winning_score_;
+    private Integer     number_of_players_; // Including User
+    private Strategy    ai_strategy_;
     private List<Submission>       board_;
     protected Map<String, Integer> score;
+    public TurnPattern turn_;
 
     /**
      * Constructor
      */
-    public Game(String name, int decks, boolean has_jokers, int deal_number, int winning_score) {
-        score          = new HashMap<String, Integer>();
-        board_         = new LinkedList<Submission>();
-        title_         = name;
-        decks_         = decks;
-        has_jokers_    = has_jokers;
-        deal_number_   = deal_number;
-        winning_score_ = winning_score;
-        trumps_        = Suit.JOKERS;
+    public Game(String name, int players_, Strategy strategy, int decks, boolean has_jokers, int deal_number, int init_score, int winning_score) {
+        score              = new HashMap<String, Integer>();
+        board_             = new LinkedList<Submission>();
+        title_             = name;
+        number_of_players_ = players_;
+        ai_strategy_       = strategy;
+        decks_             = decks;
+        has_jokers_        = has_jokers;
+        deal_number_       = deal_number;
+        init_score_        = init_score;
+        winning_score_     = winning_score;
+        trumps_            = Suit.JOKERS;
     }
 
     /**
@@ -74,6 +78,15 @@ public abstract class Game {
     }
 
     /**
+     * Return the current round suit
+     * @return The Suit
+     * @see Suit
+     */
+    public Suit round() {
+        return board_.get(0).card.suit();
+    }
+
+    /**
      * Get the name of the game.
      * @return The name of the game
      */
@@ -86,8 +99,26 @@ public abstract class Game {
      * @param player
      */
     public void register_player(String player) {
-        score.put(player, 0);
+        score.put(player, init_score_);
         System.out.println( player + " has joined the game.");
+    }
+
+    /**
+     * Create the number of opponents needed for game.
+     * @return A List of opponents
+     */
+    public List<Player> get_opponents( ) {
+        String names[] = { "Wallace", "Ramona", "Scott", "Pam", "Bob", "Linda", "Greg", "Belidna", "Other Scott" };
+        List<Player> opponents = new ArrayList<Player>();
+
+        for (int i = 0; i < number_of_players_ - 1; ++i ) {
+            Player temp = new Player( names[ i % names.length ] );
+            temp.strategy( ai_strategy_ );
+            opponents.add( temp );
+            register_player( temp.name() );
+        }
+
+        return opponents;
     }
 
     /**
@@ -100,17 +131,19 @@ public abstract class Game {
 
     /**
      * Pick the winner and display them
+     * @return The name of the winner
      */
-    public void pick_winner() {
+    public String pick_winner() {
         String winner = analyze_round( board_ );
         score.put(winner, score.get(winner) + 1 );
         System.out.println(winner + " won that round");
         print_scores();
+        return winner;
     }
 
     /**
-     * Determine if someone has reached the score level.
-     * @return
+     * Determine if someone has won
+     * @return True or False
      */
     public Boolean is_game_win() {
         for ( Map.Entry<String, Integer> entry : score.entrySet())
@@ -131,6 +164,19 @@ public abstract class Game {
     }
 
     /**
+     * Get the cards from the board
+     * @return All the cards from the board
+     */
+    public List<Card> collect_hand() {
+        List<Card> temp = new ArrayList<Card>();
+        for (Submission submission : board_) {
+            temp.add( submission.card);
+        }
+        board_.clear();
+        return temp;
+    }
+
+    /**
      * Print the state of the board
      */
     public void print() {
@@ -143,6 +189,9 @@ public abstract class Game {
         System.out.print("\n");
     }
 
+    /**
+     * Print the current scores
+     */
     public void print_scores() {
         System.out.println("============ Scores ============");
         for (Map.Entry<String, Integer> user : score.entrySet())
