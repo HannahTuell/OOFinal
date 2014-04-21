@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.lang.String;
 
 
@@ -55,44 +54,3 @@ public class Screen{
     }
 
 }
-/*
-=======
-=======
->>>>>>> 5c62be3f17a714069a1cc257ddddaa8705826949
-//package components;
-//
-//import javax.swing.*;
-//import java.awt.*;
-//import java.awt.event.*;
-//
-//public class Screen{
-//
-//    public static void main(String [ ] args)
-//    {
-//       Screen sc = new Screen();
-//    }
-//
-//    public void Screen (){
-//        //1. Create the frame.
-//        JFrame frame = new JFrame("FrameDemo");
-//
-//        //2. Optional: What happens when the frame closes?
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//
-//        //3. Create components and put them in the frame.
-//        //...create emptyLabel...
-//        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
-//
-//        //4. Size the frame.
-//        frame.pack();
-//
-//        //5. Show it.
-//        frame.setVisible(true);
-//    }
-<<<<<<< HEAD
-//}
->>>>>>> bc226859088d67abfdf3aa6449c72e907b77da01
-*/
-=======
-//}
->>>>>>> 5c62be3f17a714069a1cc257ddddaa8705826949
