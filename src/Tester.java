@@ -3,7 +3,10 @@
  */
 public class Tester {
 
-    public static void main( String[] args ) {
-        System.out.println("Suprise Bitch");
+
+    public static void main(String[] args) {
+        //System.out.println("Suprise Bitch");
+        Screen sc = new Screen();
     }
+
 }

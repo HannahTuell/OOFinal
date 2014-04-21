@@ -1,11 +1,13 @@
-
+/**
+ * Created by justinwoodward on 4/18/14.
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Screen{
+public class WelcomeScreen {
 
-    public Screen (){
+    public WelcomeScreen() {
         //1. Create the frame.
         JFrame frame = new JFrame("FrameDemo");
 
