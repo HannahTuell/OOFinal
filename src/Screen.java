@@ -1,30 +1,60 @@
-<<<<<<< HEAD
+import java.lang.String;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class Screen{
+    ScreenState welcomeScreen;
+    ScreenState selectGameScreen;
+    ScreenState wonGameScreen;
+
+    private static String name;
+
+    public ScreenState currentState;
 
     public Screen (){
-        //1. Create the frame.
-        JFrame frame = new JFrame("FrameDemo");
+        welcomeScreen = new WelcomeScreen(this);
+        selectGameScreen = new SelectGameScreen(this);
+        wonGameScreen = new WonGameScreen(this);
 
-        //2. Optional: What happens when the frame closes?
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //3. Create components and put them in the frame.
-        JLabel emptyLabel = new JLabel("");
-        emptyLabel.setPreferredSize(new Dimension(175, 100));
-        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
-
-        //4. Size the frame.
-        frame.pack();
-
-        //5. Show it.
-        frame.setVisible(true);
+        currentState = welcomeScreen;
+        currentState.DrawScreen();
     }
+
+    public void SetName(String theName){
+        name = theName;
+    }
+
+    public String GetName(){
+        return name;
+    }
+
+    public ScreenState GetCurrentState(){
+        return currentState;
+    }
+
+    public void SetCurrentState(ScreenState state){
+        currentState.HideScreen();
+        currentState = state;
+        currentState.DrawScreen();
+    }
+
+    public ScreenState GetWelcomeState(){
+        return welcomeScreen;
+    }
+
+    public ScreenState GetSelectGameState(){
+        return selectGameScreen;
+    }
+
+    public ScreenState GetWonGameState(){
+        return wonGameScreen;
+    }
+
 }
+/*
 =======
 //package components;
 //
@@ -58,3 +88,4 @@ public class Screen{
 //    }
 //}
 >>>>>>> bc226859088d67abfdf3aa6449c72e907b77da01
+*/

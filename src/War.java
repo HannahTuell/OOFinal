@@ -16,7 +16,8 @@ public class War extends Game {
                 "War", // Name of Game
                 1,       // Number of Decks
                 false,   // Has Jokers
-                26       // Deal Number: 2 Players, half the deck each
+                26,       // Deal Number: 2 Players, half the deck each
+                3
         );
     }
 
