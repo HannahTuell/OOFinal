@@ -14,12 +14,6 @@ public class War extends Game {
     public War() {
         super(
                 "War", // Name of Game
-<<<<<<< HEAD
-                1,       // Number of Decks
-                false,   // Has Jokers
-                26,       // Deal Number: 2 Players, half the deck each
-                3
-=======
                 2,     // Number of Players including user
                 new StrategyPickFirst(), // The strategy for the AI players
                 1,     // Number of Decks
@@ -35,7 +29,6 @@ public class War extends Game {
                 false, // If players need to discard a card
                 true, // If players need to collect cards
                 false   // If players need a trump to play by
->>>>>>> 5c62be3f17a714069a1cc257ddddaa8705826949
         );
     }
 
