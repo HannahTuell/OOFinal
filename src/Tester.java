@@ -5,13 +5,6 @@ import java.util.Scanner;
  */
 
 public class Tester {
-
-<<<<<<< HEAD
-
-    public static void main(String[] args) {
-        //System.out.println("Suprise Bitch");
-        Screen sc = new Screen();
-=======
     public static void main( String[] args ) {
       Game game = new Euchre();
       Dealer joe = new Dealer( );
@@ -24,7 +17,6 @@ public class Tester {
       joe.user( new Player( input ) );
 
       joe.play();
->>>>>>> bc226859088d67abfdf3aa6449c72e907b77da01
     }
 
 }

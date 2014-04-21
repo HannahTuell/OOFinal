@@ -14,9 +14,10 @@ public class War extends Game {
     public War() {
         super(
                 "War", // Name of Game
-                1,       // Number of Decks
-                false,   // Has Jokers
-                26       // Deal Number: 2 Players, half the deck each
+                1,     // Number of Decks
+                false, // Has Jokers
+                26,    // Deal Number: 2 Players, half the deck each
+                0      // Winning Score
         );
     }
 
@@ -26,7 +27,7 @@ public class War extends Game {
      */
     @Override
     public Deck deck() {
-        // builds a new deck with the nu,ber of decks specified and whether or not we want jokers
+        // builds a new deck with the number of decks specified and whether or not we want jokers
         Deck deck = new Deck( decks(), has_jokers() );
         return deck;
     }
