@@ -65,9 +65,9 @@ public class War extends Game {
             return p2.who;
         }
 
-        if (p1Rank < p2Rank) {
-            return p2.who;
-        }
+//        if (p1Rank < p2Rank) {
+//            return p2.who;
+//        }
 
 //        if (p1Rank == p2Rank) {
 //            return null;
