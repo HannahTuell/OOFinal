@@ -51,7 +51,6 @@ public class Dealer {
               if ( player.is_human() ) {
                   print();
               }
-
               // Player will draw a card from the draw pile
               if ( game_.turn_.draw() ) {
                   player.take_card( deck_.draw() );
@@ -68,6 +67,7 @@ public class Dealer {
               if ( game_.turn_.discard() ) {
                   // Discard a card
               }
+
           }
 
           String winner;
@@ -134,7 +134,8 @@ public class Dealer {
           System.out.println( "The round is: " + game_.round() );
       }
 
-      for ( Player player : players_ )
-        player.print();
+      //for ( Player player : players_ )
+        //player.print();
+      Screen.GetCurrentState().Print(players_);
   }
 }

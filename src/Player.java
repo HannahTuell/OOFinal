@@ -74,6 +74,9 @@ public class Player {
      */
     public int cards_in_hand() { return hand_.size(); }
 
+    public List<Card> GetHand(){
+        return hand_;
+    }
     /**
      * The player's hand has been added to the discard pile
      * @param d The deck in play

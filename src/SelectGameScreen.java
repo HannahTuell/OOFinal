@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 /**
  * Created by justinwoodward on 4/21/14.
@@ -35,7 +36,7 @@ public class SelectGameScreen implements ScreenState, ActionListener {
         JButton euchreButton = Creater.CreateButton("Play Euchre", "Euchre");
         euchreButton.addActionListener(this);
         panel.add(euchreButton, BorderLayout.CENTER);
-        JButton otherGame = Creater.CreateButton("Other Game", "OtherGame");
+        JButton otherGame = Creater.CreateButton("Play War", "war");
         otherGame.addActionListener(this);
         panel.add(otherGame, BorderLayout.CENTER);
     }
@@ -49,12 +50,37 @@ public class SelectGameScreen implements ScreenState, ActionListener {
         frame.setVisible(false);
     }
 
+    public void Print(java.util.List<Player> players){
+
+    }
+
+    public void DrawCard(){
+
+    }
+
+    public void PickCard(){
+
+    }
+
+    public void DiscardCard(){
+
+    }
+
     public void actionPerformed(ActionEvent e) {
+        Game game;
         if ("Euchre".equals(e.getActionCommand())) {
-            screen.SetCurrentState(screen.GetWonGameState());
+            game = new Euchre();
+            screen.SetCurrentState(screen.GetEuchreGameState());
         }
-        if("OtherGame".equals(e.getActionCommand())){
-            System.out.println("There is no other game haha!");
+        else if("war".equals(e.getActionCommand())){
+            game = new War();
         }
+        else{
+            game = new Euchre();
+        }
+        Dealer joe = screen.GetDealer();
+        joe.game(game);
+        joe.user( new Player( screen.GetName() ) );
+        joe.play();
     }
 }

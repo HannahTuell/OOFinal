@@ -4,6 +4,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class WelcomeScreen implements ScreenState, ActionListener {
     JFrame frame;
@@ -13,6 +14,22 @@ public class WelcomeScreen implements ScreenState, ActionListener {
     JTextField textBox = Creater.CreateTextBox();
 
     public WelcomeScreen(Screen theScreen) {
+        CreateScreen(theScreen);
+        Dealer joe = new Dealer();
+        screen.SetDealer(joe);
+
+
+    }
+
+    public void DrawScreen(){
+        frame.setVisible(true);
+    }
+
+    public void HideScreen(){
+        frame.setVisible(false);
+    }
+
+    public void CreateScreen(Screen theScreen){
         screen = theScreen;
         //1. Create the frame.
         frame = new JFrame("Welcome");
@@ -38,13 +55,20 @@ public class WelcomeScreen implements ScreenState, ActionListener {
         panel.add(button, BorderLayout.SOUTH);
     }
 
-    public void DrawScreen(){
-        //5. Show it.
-        frame.setVisible(true);
+    public void Print(java.util.List<Player> players){
+
     }
 
-    public void HideScreen(){
-        frame.setVisible(false);
+    public void DrawCard(){
+
+    }
+
+    public void PickCard(){
+
+    }
+
+    public void DiscardCard(){
+
     }
 
     public void actionPerformed(ActionEvent e) {

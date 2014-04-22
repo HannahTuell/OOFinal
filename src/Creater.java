@@ -10,7 +10,7 @@ public class Creater {
 
     }
     public static JTextField CreateTextBox(){
-        JTextField textBox = new JTextField(15);
+        JTextField textBox = new JTextField(10);
         return textBox;
     }
 

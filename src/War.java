@@ -73,7 +73,7 @@ public class War extends Game {
 //            return null;
 //        }
 
-        return null;
+        //return null;
     }
 
     /**

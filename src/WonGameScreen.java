@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 /**
  * Created by justinwoodward on 4/21/14.
@@ -47,6 +48,22 @@ public class WonGameScreen implements ScreenState, ActionListener {
 
     public void HideScreen(){
         frame.setVisible(false);
+    }
+
+    public void Print(java.util.List<Player> players){
+
+    }
+
+    public void DrawCard(){
+
+    }
+
+    public void PickCard(){
+
+    }
+
+    public void DiscardCard(){
+
     }
 
     public void actionPerformed(ActionEvent e) {

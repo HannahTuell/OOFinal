@@ -6,18 +6,20 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Screen{
-    ScreenState welcomeScreen;
-    ScreenState selectGameScreen;
-    ScreenState wonGameScreen;
-
+    static ScreenState welcomeScreen;
+    static ScreenState selectGameScreen;
+    static ScreenState wonGameScreen;
+    static ScreenState euchreGameScreen;
+    private static Dealer joe;
     private static String name;
 
-    public ScreenState currentState;
+    public static ScreenState currentState;
 
     public Screen (){
         welcomeScreen = new WelcomeScreen(this);
         selectGameScreen = new SelectGameScreen(this);
         wonGameScreen = new WonGameScreen(this);
+        euchreGameScreen = new EuchreGameScreen(this);
 
         currentState = welcomeScreen;
         currentState.DrawScreen();
@@ -27,30 +29,42 @@ public class Screen{
         name = theName;
     }
 
-    public String GetName(){
+    public static String GetName(){
         return name;
     }
 
-    public ScreenState GetCurrentState(){
+    public static ScreenState GetCurrentState(){
         return currentState;
     }
 
-    public void SetCurrentState(ScreenState state){
+    public static void SetCurrentState(ScreenState state){
         currentState.HideScreen();
         currentState = state;
         currentState.DrawScreen();
     }
 
-    public ScreenState GetWelcomeState(){
+    public static Dealer GetDealer(){
+        return joe;
+    }
+
+    public static void SetDealer(Dealer dealer){
+        joe = dealer;
+    }
+
+    public static ScreenState GetWelcomeState(){
         return welcomeScreen;
     }
 
-    public ScreenState GetSelectGameState(){
+    public static ScreenState GetSelectGameState(){
         return selectGameScreen;
     }
 
-    public ScreenState GetWonGameState(){
+    public static ScreenState GetWonGameState(){
         return wonGameScreen;
+    }
+
+    public static ScreenState GetEuchreGameState() {
+        return euchreGameScreen;
     }
 
 }
