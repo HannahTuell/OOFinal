@@ -17,6 +17,9 @@ public class Dealer {
       players_ = new ArrayList<Player>();
   }
 
+    public List<Player> GetPlayers(){
+        return players_;
+    }
   /**
    * Register the User
    * @param user
@@ -42,6 +45,7 @@ public class Dealer {
    * Play the game specified by the game_ attribute
    */
   public void play() {
+
       while( !game_.is_game_win() ) {
           deal_round();
 
@@ -136,6 +140,6 @@ public class Dealer {
 
       //for ( Player player : players_ )
         //player.print();
-      Screen.GetCurrentState().Print(players_);
+      //Screen.GetCurrentState().Print(players_);
   }
 }

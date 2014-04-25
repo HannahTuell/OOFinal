@@ -58,8 +58,8 @@ public class WonGameScreen implements ScreenState, ActionListener {
 
     }
 
-    public void PickCard(){
-
+    public Integer PickCard(){
+            return 0;
     }
 
     public void DiscardCard(){

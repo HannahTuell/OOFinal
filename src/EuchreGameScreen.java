@@ -28,6 +28,8 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
     JPanel aiPanel2;
     JPanel aiPanel3;
     JPanel playerPanel;
+    boolean buttonPressed = false;
+    int cardPicked;
 
 
     public EuchreGameScreen(Screen theScreen){
@@ -44,6 +46,7 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
 
     public void CreateScreen(Screen theScreen){
         screen = theScreen;
+
         //1. Create the frame.
         frame = new JFrame("Euchre");
         //2. Optional: What happens when the frame closes?
@@ -114,7 +117,8 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
             else {
                 if(screen.GetName().equals(player.name())){
                     for (Card c : player.GetHand()) {
-                        JButton button = Creater.CreateButton(c.toString(), c.toString());
+                        JButton button = Creater.CreateButton(c.toString(), "card");
+                        System.out.println(c.toString() + " The Card");
                         playerPanel.add(button);
 
                     }
@@ -138,8 +142,14 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
 
     }
 
-    public void PickCard(){
+    public Integer PickCard(){
 
+        while(!buttonPressed){
+            //System.out.println("In Loop");
+
+        }
+        buttonPressed = false;
+        return cardPicked;
     }
 
     public void DiscardCard(){
@@ -147,6 +157,13 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        if ("card".equals(e.getActionCommand())) {
+            cardPicked = Integer.parseInt(e.toString());
+            buttonPressed = true;
+            System.out.println(e.toString());
+
+        }
+        System.out.println(e.toString());
 
     }
 

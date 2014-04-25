@@ -13,7 +13,7 @@ public interface ScreenState {
 
     void DrawCard();
 
-    void PickCard();
+    Integer PickCard();
 
     void DiscardCard();
 }
