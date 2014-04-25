@@ -24,6 +24,10 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
     JLabel aiLabel2;
     JLabel aiLabel3;
     JLabel playerLabel;
+    JPanel aiPanel1;
+    JPanel aiPanel2;
+    JPanel aiPanel3;
+    JPanel playerPanel;
 
 
     public EuchreGameScreen(Screen theScreen){
@@ -76,15 +80,15 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
         playersLabels.add(aiLabel3);
         playersLabels.add(playerLabel);
 
-        JPanel aiPanel1 = new JPanel();
-        JPanel aiPanel2 = new JPanel();
-        JPanel aiPanel3 = new JPanel();
-        JPanel playerPanel = new JPanel();
+        aiPanel1 = new JPanel();
+        aiPanel2 = new JPanel();
+        aiPanel3 = new JPanel();
+        playerPanel = new JPanel();
 
         aiPanel1.add(ai1, BorderLayout.NORTH);
         aiPanel2.add(ai2, BorderLayout.NORTH);
         aiPanel3.add(ai3, BorderLayout.NORTH);
-        playerPanel.add(player, BorderLayout.NORTH);
+        //playerPanel.add(player, BorderLayout.NORTH);
 
         aiPanel1.add(aiLabel1, BorderLayout.SOUTH);
         aiPanel2.add(aiLabel2, BorderLayout.SOUTH);
@@ -108,13 +112,21 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
             if (player.GetHand().isEmpty())
                 System.out.print("No Cards Available");
             else {
-                System.out.println(player.GetHand().toString());
-                for (Card c : player.GetHand()) {
-                    //System.out.print(c.toString() + ", ");
-                    //text = playersTextFields.get(i).getText();
-                    text += c.toString() + ",";
-                    playersTextFields.get(i).setText(text);
+                if(screen.GetName().equals(player.name())){
+                    for (Card c : player.GetHand()) {
+                        JButton button = Creater.CreateButton(c.toString(), c.toString());
+                        playerPanel.add(button);
 
+                    }
+                }else {
+                    System.out.println(player.GetHand().toString());
+                    for (Card c : player.GetHand()) {
+                        //System.out.print(c.toString() + ", ");
+                        //text = playersTextFields.get(i).getText();
+                        text += c.toString() + ",";
+                        playersTextFields.get(i).setText(text);
+
+                    }
                 }
 
             }
