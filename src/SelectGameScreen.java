@@ -80,7 +80,7 @@ public class SelectGameScreen implements ScreenState, ActionListener {
         }
         Dealer joe = screen.GetDealer();
         joe.game(game);
-        joe.user( new Player( screen.GetName() ) );
+        joe.user( new Player(screen.GetName()));
         //joe.print();
         joe.play();
     }

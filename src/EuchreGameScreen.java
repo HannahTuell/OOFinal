@@ -30,6 +30,7 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
     JPanel playerPanel;
     boolean buttonPressed = false;
     int cardPicked;
+    List<Player> playerList;
 
 
     public EuchreGameScreen(Screen theScreen){
@@ -108,6 +109,8 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
 
     public void Print(List<Player> players){
         int i = 0;
+        playerList = players;
+        playerPanel.removeAll();
         for ( Player player : players) {
             //System.out.print(player.name() + "'s Hand: ");
             playersLabels.get(i).setText(player.name());
@@ -116,6 +119,7 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
                 System.out.print("No Cards Available");
             else {
                 if(screen.GetName().equals(player.name())){
+                    playerPanel.add(playerLabel);
                     for (Card c : player.GetHand()) {
                         JButton button = Creater.CreateButton(c.toString(), "card");
                         System.out.println(c.toString() + " The Card");
@@ -137,16 +141,19 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
             System.out.print("\n");
             i++;
         }
+        frame.setVisible(true);
+        frame.revalidate();
     }
     public void DrawCard(){
 
     }
 
     public Integer PickCard(){
-
+        frame.setVisible(false);
+        frame.setVisible(true);
         while(!buttonPressed){
-            //System.out.println("In Loop");
-
+            //frame.repaint();
+            //playerPanel.repaint();
         }
         buttonPressed = false;
         return cardPicked;

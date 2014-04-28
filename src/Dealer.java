@@ -48,7 +48,8 @@ public class Dealer {
 
       while( !game_.is_game_win() ) {
           deal_round();
-
+          //Adds the players and cards to the screen.
+          Screen.currentState.Print(players_);
           Suit round = null;
           Submission temp;
           for ( Player player : players_ ) {

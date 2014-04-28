@@ -15,6 +15,7 @@ public class StrategyHuman implements Strategy {
 
         //This is where I have my pick card and the currentstate will be the EuchreGameScreen.java so you can just
         //look there to see what will happen next.
+
         index = Screen.currentState.PickCard();
         System.out.print("Card Choice? [0-"+new Integer(hand.size()-1).toString()+"]: ");
         //index = console.nextInt();

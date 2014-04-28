@@ -10,10 +10,10 @@ public class Tester {
     public static void main( String[] args ) {
         Screen sc = new Screen();
         
-        Scanner console = new Scanner(System.in);
+        //Scanner console = new Scanner(System.in);
 //        Console console = System.console();
-        Dealer joe = new Dealer( );
-        Game game;
+        //Dealer joe = new Dealer( );
+        //Game game;
 /*
         System.out.println("Available Games");
         System.out.println("\t0: Euchre");
