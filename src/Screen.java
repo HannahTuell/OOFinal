@@ -27,7 +27,6 @@ public class Screen{
     }
 
     public void set_user(Player user) {
-        System.out.println(user);
         joe.user(user);
     }
 
