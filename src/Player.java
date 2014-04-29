@@ -94,7 +94,10 @@ public class Player {
      * @return Card to be played
      */
     public Submission pick_card( Suit trump, Suit round ) {
-        Card temp = hand_.get( strat_.pick_card( hand_, trump, round ) );
+        int index = -1;
+        while( index < 0 )
+            index = strat_.pick_card( hand_, trump, round );
+        Card temp = hand_.get( index );
         hand_.remove( temp );
         return new Submission( name(), temp );
     }

@@ -16,4 +16,6 @@ public interface ScreenState {
     Integer PickCard();
 
     void DiscardCard();
+
+    Screen getScreen();
 }

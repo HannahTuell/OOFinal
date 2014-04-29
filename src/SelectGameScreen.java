@@ -66,11 +66,13 @@ public class SelectGameScreen implements ScreenState, ActionListener {
 
     }
 
+    public Screen getScreen() { return screen; }
+
     public void actionPerformed(ActionEvent e) {
         Game game;
         if ("Euchre".equals(e.getActionCommand())) {
             game = new Euchre();
-            screen.SetCurrentState(screen.GetEuchreGameState());
+            screen.SetCurrentState(new EuchreGameScreen(screen));
         }
         else if("war".equals(e.getActionCommand())){
             game = new War();

@@ -142,7 +142,7 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
             i++;
         }
         frame.setVisible(true);
-        frame.revalidate();
+//        frame.revalidate();
     }
     public void DrawCard(){
 
@@ -162,6 +162,8 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
     public void DiscardCard(){
 
     }
+
+    public Screen getScreen() { return screen; }
 
     public void actionPerformed(ActionEvent e) {
         if ("card".equals(e.getActionCommand())) {

@@ -66,12 +66,14 @@ public class WonGameScreen implements ScreenState, ActionListener {
 
     }
 
+    public Screen getScreen() { return screen; }
+
     public void actionPerformed(ActionEvent e) {
         if ("playAgain".equals(e.getActionCommand())) {
             System.out.println("Nope!");
         }
         else if("selectGame".equals(e.getActionCommand())){
-            screen.SetCurrentState(screen.GetSelectGameState());
+            screen.SetCurrentState(new SelectGameScreen(screen));
         }
         System.out.print("Here");
     }

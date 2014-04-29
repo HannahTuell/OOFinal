@@ -199,6 +199,8 @@ public abstract class Game {
         System.out.print("\n");
     }
 
+    public List<Submission> get_board() { return board_; }
+
     /**
      * Gives the Game specific deck of cards
      * @return Game specific deck

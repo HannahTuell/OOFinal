@@ -71,10 +71,12 @@ public class WelcomeScreen implements ScreenState, ActionListener {
 
     }
 
+    public Screen getScreen() { return screen; }
+
     public void actionPerformed(ActionEvent e) {
         if (buttonActionCommand.equals(e.getActionCommand())) {
             screen.SetName(textBox.getText());
-            screen.SetCurrentState(screen.GetSelectGameState());
+            screen.SetCurrentState(new SelectGameScreen(screen));
 
         }
     }
