@@ -15,10 +15,6 @@ public class WelcomeScreen implements ScreenState, ActionListener {
 
     public WelcomeScreen(Screen theScreen) {
         CreateScreen(theScreen);
-        Dealer joe = new Dealer();
-        screen.SetDealer(joe);
-
-
     }
 
     public void DrawScreen(){
@@ -77,7 +73,7 @@ public class WelcomeScreen implements ScreenState, ActionListener {
         if (buttonActionCommand.equals(e.getActionCommand())) {
             screen.SetName(textBox.getText());
             screen.SetCurrentState(new SelectGameScreen(screen));
-
+            screen.set_user(new Player(textBox.getText()));
         }
     }
 }

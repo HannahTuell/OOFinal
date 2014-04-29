@@ -13,11 +13,20 @@ public class Screen{
 
     public Screen (){
         currentState = new WelcomeScreen(this);
+        joe = new Dealer();
         currentState.DrawScreen();
     }
 
     public void SetName(String theName){
         name = theName;
+    }
+
+    public void set_game(Game game) {
+        joe.game(game);
+    }
+
+    public void set_user(Player user) {
+        joe.user(user);
     }
 
     public static String GetName(){
