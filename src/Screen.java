@@ -15,7 +15,10 @@ public class Screen{
     public Screen (){
         currentState = new WelcomeScreen(this);
         joe = new Dealer();
-        currentState.DrawScreen();
+    }
+
+    public void display() {
+        while( !currentState.DrawScreen() );
     }
 
     public void SetName(String theName){

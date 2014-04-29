@@ -41,9 +41,11 @@ public class WonGameScreen implements ScreenState, ActionListener {
         panel.add(selectGame, BorderLayout.CENTER);
     }
 
-    public void DrawScreen(){
+    public boolean DrawScreen(){
         emptyLabel.setText("Congratulations " + screen.GetName() + " you won your game!");
-        frame.setVisible(true);
+        if ( !frame.isVisible() )
+            frame.setVisible(true);
+        return false;
     }
 
     public void HideScreen(){

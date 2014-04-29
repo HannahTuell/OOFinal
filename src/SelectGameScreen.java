@@ -41,9 +41,11 @@ public class SelectGameScreen implements ScreenState, ActionListener {
         panel.add(otherGame, BorderLayout.CENTER);
     }
 
-    public void DrawScreen(){
+    public boolean DrawScreen(){
         emptyLabel.setText("Select a Game to Play " + screen.GetName());
-        frame.setVisible(true);
+        if ( !frame.isVisible() )
+            frame.setVisible(true);
+        return true;
     }
 
     public void HideScreen(){

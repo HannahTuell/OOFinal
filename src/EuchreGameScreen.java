@@ -37,8 +37,11 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
         CreateScreen(theScreen);
     }
 
-    public void DrawScreen(){
-        frame.setVisible(true);
+    public boolean DrawScreen() {
+        if ( !frame.isVisible() )
+            frame.setVisible(true);
+
+        return true;
     }
 
     public void HideScreen(){

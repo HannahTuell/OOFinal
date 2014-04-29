@@ -5,7 +5,7 @@ import java.util.List;
  */
 public interface ScreenState {
 
-    void DrawScreen();
+    boolean DrawScreen();
 
     void HideScreen();
 
