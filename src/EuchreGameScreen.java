@@ -118,7 +118,7 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
             if (player.GetHand().isEmpty())
                 System.out.print("No Cards Available");
             else {
-                if(screen.GetName().equals(player.name())){
+                if(player.is_human()){
                     playerPanel.add(playerLabel);
                     for (Card c : player.GetHand()) {
                         JButton button = Creater.CreateButton(c.toString(), "card");
