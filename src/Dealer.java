@@ -41,6 +41,8 @@ public class Dealer {
       players_ = game_.get_opponents();
   }
 
+    public List<Submission> get_board() { return game_.get_board(); }
+
   /**
    * Play the game specified by the game_ attribute
    */

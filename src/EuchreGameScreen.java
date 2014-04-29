@@ -111,36 +111,43 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
         int i = 0;
         playerList = players;
         playerPanel.removeAll();
-        for ( Player player : players) {
-            //System.out.print(player.name() + "'s Hand: ");
-            playersLabels.get(i).setText(player.name());
-            String text = "";
-            if (player.GetHand().isEmpty())
-                System.out.print("No Cards Available");
-            else {
-                if(player.is_human()){
-                    playerPanel.add(playerLabel);
-                    for (Card c : player.GetHand()) {
-                        JButton button = Creater.CreateButton(c.toString(), "card");
-                        System.out.println(c.toString() + " The Card");
-                        playerPanel.add(button);
 
-                    }
-                }else {
-                    System.out.println(player.GetHand().toString());
-                    for (Card c : player.GetHand()) {
-                        //System.out.print(c.toString() + ", ");
-                        //text = playersTextFields.get(i).getText();
-                        text += c.toString() + ",";
-                        playersTextFields.get(i).setText(text);
-
-                    }
-                }
-
-            }
-            System.out.print("\n");
-            i++;
+        for ( Submission s : screen.get_board() ) {
+            playersLabels.get(i).setText(s.who);
+            playersTextFields.get(i++).setText(s.card.toString());
         }
+
+
+//        for ( Player player : players) {
+//            //System.out.print(player.name() + "'s Hand: ");
+//            playersLabels.get(i).setText(player.name());
+//            String text = "";
+//            if (player.GetHand().isEmpty())
+//                System.out.print("No Cards Available");
+//            else {
+//                if(player.is_human()){
+//                    playerPanel.add(playerLabel);
+//                    for (Card c : player.GetHand()) {
+//                        JButton button = Creater.CreateButton(c.toString(), "card");
+//                        System.out.println(c.toString() + " The Card");
+//                        playerPanel.add(button);
+//
+//                    }
+//                }else {
+//                    System.out.println(player.GetHand().toString());
+//                    for (Card c : player.GetHand()) {
+//                        //System.out.print(c.toString() + ", ");
+//                        //text = playersTextFields.get(i).getText();
+//                        text += c.toString() + ",";
+//                        playersTextFields.get(i).setText(text);
+//
+//                    }
+//                }
+//
+//            }
+//            System.out.print("\n");
+//            i++;
+//        }
         frame.setVisible(true);
 //        frame.revalidate();
     }

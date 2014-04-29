@@ -2,8 +2,9 @@ import java.lang.String;
 
 
 import javax.swing.*;
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 
 public class Screen{
     private static Dealer joe;
@@ -26,8 +27,11 @@ public class Screen{
     }
 
     public void set_user(Player user) {
+        System.out.println(user);
         joe.user(user);
     }
+
+    public List<Submission> get_board() { return joe.get_board(); }
 
     public static String GetName(){
         return name;
