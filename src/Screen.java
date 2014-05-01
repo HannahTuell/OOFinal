@@ -18,7 +18,19 @@ public class Screen{
     }
 
     public void display() {
-        while( !currentState.DrawScreen() );
+        while( !currentState.DrawScreen() || !joe.is_win() );
+    }
+
+    public void play_opponents() {
+        joe.print();
+        joe.play_opponents();
+    }
+    public void play_human() {
+        joe.print();
+        joe.play_human();
+    }
+    public List<Card> get_human_hand() {
+        return joe.get_human().GetHand();
     }
 
     public void SetName(String theName){
@@ -34,6 +46,8 @@ public class Screen{
     }
 
     public List<Submission> get_board() { return joe.get_board(); }
+
+    public void deal_round() { joe.deal_round(); }
 
     public static String GetName(){
         return name;

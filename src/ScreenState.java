@@ -9,7 +9,7 @@ public interface ScreenState {
 
     void HideScreen();
 
-    void Print(List<Player> players);
+    void Print();
 
     void DrawCard();
 

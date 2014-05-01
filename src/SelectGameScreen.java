@@ -52,7 +52,7 @@ public class SelectGameScreen implements ScreenState, ActionListener {
         frame.setVisible(false);
     }
 
-    public void Print(java.util.List<Player> players){
+    public void Print(){
 
     }
 
@@ -72,6 +72,7 @@ public class SelectGameScreen implements ScreenState, ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 //        Game game;
+        this.HideScreen();
         if ("Euchre".equals(e.getActionCommand())) {
             screen.set_game(new Euchre());
             screen.SetCurrentState(new EuchreGameScreen(screen));

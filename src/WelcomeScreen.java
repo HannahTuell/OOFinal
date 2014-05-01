@@ -53,7 +53,7 @@ public class WelcomeScreen implements ScreenState, ActionListener {
         panel.add(button, BorderLayout.SOUTH);
     }
 
-    public void Print(java.util.List<Player> players){
+    public void Print(){
 
     }
 

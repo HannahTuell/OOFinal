@@ -30,7 +30,7 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
     JPanel playerPanel;
     boolean buttonPressed = false;
     int cardPicked;
-    List<Player> playerList;
+//    List<Player> playerList;
 
 
     public EuchreGameScreen(Screen theScreen){
@@ -40,6 +40,11 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
     public boolean DrawScreen() {
         if ( !frame.isVisible() )
             frame.setVisible(true);
+
+        screen.deal_round();
+        screen.play_opponents();
+        Print();
+        screen.play_human();
 
         return true;
     }
@@ -110,9 +115,9 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
 
     }
 
-    public void Print(List<Player> players){
+    public void Print(){
         int i = 0;
-        playerList = players;
+//        playerList = players;
         playerPanel.removeAll();
 
         for ( Submission s : screen.get_board() ) {
@@ -120,6 +125,10 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
             playersTextFields.get(i++).setText(s.card.toString());
         }
 
+        for (Card card : screen.get_human_hand()) {
+            JButton button = Creater.CreateButton(card.toString(), "card");
+            playerPanel.add(button);
+        }
 
 //        for ( Player player : players) {
 //            //System.out.print(player.name() + "'s Hand: ");
@@ -151,7 +160,7 @@ public class EuchreGameScreen implements ScreenState, ActionListener {
 //            System.out.print("\n");
 //            i++;
 //        }
-        frame.setVisible(true);
+        //frame.setVisible(true);
 //        frame.revalidate();
     }
     public void DrawCard(){

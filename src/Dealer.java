@@ -14,6 +14,7 @@ public class Dealer {
    * Constructor
    */
   public Dealer( ) {
+      game_ = null;
       players_ = new ArrayList<Player>();
   }
 
@@ -43,15 +44,75 @@ public class Dealer {
 
     public List<Submission> get_board() { return game_.get_board(); }
 
+    public boolean is_win() {
+        if ( game_ == null ) return false;
+        return game_.is_game_win();
+    }
+
+    public void play_opponents() {
+        Suit round = null;
+        Submission temp;
+        for ( Player player : players_ ) {
+            if ( !player.is_human() ) {
+                // Player will draw a card from the draw pile
+                if (game_.turn_.draw()) {
+                    player.take_card(deck_.draw());
+                }
+                // Player will pick a card to play
+                if (game_.turn_.play()) {
+                    temp = player.pick_card(game_.trump(), round);
+                    if (round == null) {
+                        round = temp.card.suit();
+                    }
+                    game_.take_card(temp);
+                }
+                // Player will discard a card
+                if (game_.turn_.discard()) {
+                    // Discard a card
+                }
+            }
+        }
+    }
+
+    public void play_human() {
+        Submission temp;
+        for ( Player player : players_ ) {
+            if ( player.is_human() ) {
+                // Player will draw a card from the draw pile
+                if (game_.turn_.draw()) {
+                    player.take_card(deck_.draw());
+                }
+                // Player will pick a card to play
+                if (game_.turn_.play()) {
+                    temp = player.pick_card(game_.trump(), game_.round());
+                    game_.take_card(temp);
+                }
+                // Player will discard a card
+                if (game_.turn_.discard()) {
+                    // Discard a card
+                }
+            }
+        }
+    }
+
+    public Player get_human() {
+        for(Player player : players_ ) {
+            if ( player.is_human() ) {
+                return player;
+            }
+        }
+        return null;
+    }
+
   /**
    * Play the game specified by the game_ attribute
    */
-  public void play() {
+  public void play_console() {
 
       while( !game_.is_game_win() ) {
           deal_round();
           //Adds the players and cards to the screen.
-          Screen.currentState.Print(players_);
+//          Screen.currentState.Print();
           Suit round = null;
           Submission temp;
           for ( Player player : players_ ) {
@@ -141,8 +202,8 @@ public class Dealer {
           System.out.println( "The round is: " + game_.round() );
       }
 
-      //for ( Player player : players_ )
-        //player.print();
-      //Screen.GetCurrentState().Print(players_);
+      for ( Player player : players_ )
+        player.print();
+//      Screen.GetCurrentState().Print(players_);
   }
 }

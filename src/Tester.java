@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class Tester {
 
     public static void main( String[] args ) {
-        Screen sc = new Screen();
-        sc.display();
-        //Scanner console = new Scanner(System.in);
+//        Screen sc = new Screen();
+//        sc.display();
+        Scanner console = new Scanner(System.in);
 //        Console console = System.console();
-        //Dealer joe = new Dealer( );
-        //Game game;
-/*
+        Dealer joe = new Dealer( );
+        Game game;
+
         System.out.println("Available Games");
         System.out.println("\t0: Euchre");
         System.out.println("\t1: War");
@@ -34,8 +34,7 @@ public class Tester {
 
 
         joe.user( new Player( name ) );
-        joe.play();
-        */
+        joe.play_console();
     }
 
 }

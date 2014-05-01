@@ -52,7 +52,7 @@ public class WonGameScreen implements ScreenState, ActionListener {
         frame.setVisible(false);
     }
 
-    public void Print(java.util.List<Player> players){
+    public void Print(){
 
     }
 
